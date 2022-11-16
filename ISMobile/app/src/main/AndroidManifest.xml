@@ -19,15 +19,15 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.ISMobileNoActionBar" />
+            android:theme="@style/Theme.ISMobile.Orange" />
         <activity
             android:name=".LoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.ISMobileNoActionBar" />
+            android:theme="@style/Theme.ISMobile.Grey" />
         <activity
             android:name=".SplashScreen"
             android:exported="true"
-            android:theme="@style/Theme.ISMobileNoActionBar">
+            android:theme="@style/Theme.ISMobile.Grey">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,11 +37,11 @@
         <activity
             android:name=".UbahProfilActivity"
             android:exported="false"
-            android:theme="@style/Theme.ISMobileNoActionBar" />
+            android:theme="@style/Theme.ISMobile.Orange" />
         <activity
             android:name=".UbahPasswordActivity"
             android:exported="false"
-            android:theme="@style/Theme.ISMobileNoActionBar" />
+            android:theme="@style/Theme.ISMobile.Orange" />
 
         <meta-data
             android:name="preloaded_fonts"
