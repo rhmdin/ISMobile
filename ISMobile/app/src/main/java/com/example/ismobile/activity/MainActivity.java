@@ -1,9 +1,9 @@
-package com.example.ismobile;
+package com.example.ismobile.activity;
 import com.example.ismobile.R;
-import com.example.ismobile.ProfileFragment;
-import com.example.ismobile.HomeFragment;
-import com.example.ismobile.RequestFragment;
-import com.example.ismobile.JadwalDosenFragment;
+import com.example.ismobile.fragment.ProfileFragment;
+import com.example.ismobile.fragment.HomeFragment;
+import com.example.ismobile.fragment.RequestFragment;
+import com.example.ismobile.fragment.JadwalDosenFragment;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

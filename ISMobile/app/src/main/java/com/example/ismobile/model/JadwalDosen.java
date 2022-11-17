@@ -1,4 +1,4 @@
-package com.example.ismobile.models;
+package com.example.ismobile.model;
 
 public class JadwalDosen {
     public String nama;

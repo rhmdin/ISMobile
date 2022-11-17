@@ -25,7 +25,6 @@
         app:layout_constraintTop_toBottomOf="@+id/jadwaldosen_skripsi" />
 
     <Button
-        android:id="@+id/button_terima"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,7 +93,6 @@
         app:layout_constraintTop_toBottomOf="@+id/jadwaldosen_nim" />
 
     <View
-        android:id="@+id/jadwaldosen_divider"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_marginTop="52dp"

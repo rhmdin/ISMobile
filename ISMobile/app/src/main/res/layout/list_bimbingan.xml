@@ -53,7 +53,6 @@
         app:layout_constraintTop_toBottomOf="@+id/bimbingan_nama" />
 
     <View
-        android:id="@+id/bimbingan_divider"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_marginTop="16dp"

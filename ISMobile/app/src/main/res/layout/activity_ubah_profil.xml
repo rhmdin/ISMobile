@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EFEFEF"
-    tools:context=".UbahProfilActivity"
-    android:id="@+id/activity_ubah_profil"
-    >
+    tools:context=".activity.UbahProfilActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/ubahProfilToolbar"
@@ -36,7 +34,6 @@
         app:layout_constraintTop_toTopOf="@+id/ubahProfilToolbar" />
 
     <ImageButton
-        android:id="@+id/buttonBacktoProfile"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="80dp"
@@ -48,7 +45,6 @@
         app:srcCompat="@drawable/ic_arrow_back" />
 
     <ImageButton
-        android:id="@+id/buttonDone"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="80dp"
@@ -192,7 +188,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <EditText
-        android:id="@+id/editTextPhone"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:background="@drawable/form"

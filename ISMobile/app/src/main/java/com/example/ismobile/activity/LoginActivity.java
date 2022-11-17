@@ -1,10 +1,12 @@
-package com.example.ismobile;
+package com.example.ismobile.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ismobile.R;
 
 public class LoginActivity extends AppCompatActivity {
 

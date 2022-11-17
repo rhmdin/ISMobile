@@ -1,5 +1,5 @@
 package com.example.ismobile.adapter;
-import com.example.ismobile.models.JadwalDosen;
+import com.example.ismobile.model.JadwalDosen;
 
 import android.content.Context;
 import android.view.LayoutInflater;

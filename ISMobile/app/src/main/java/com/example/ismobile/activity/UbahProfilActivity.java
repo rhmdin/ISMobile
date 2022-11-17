@@ -1,12 +1,11 @@
-package com.example.ismobile;
+package com.example.ismobile.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 import com.example.ismobile.R;
-
-import com.example.ismobile.ProfileFragment;
+import com.example.ismobile.fragment.ProfileFragment;
 
 public class UbahProfilActivity extends AppCompatActivity{
 

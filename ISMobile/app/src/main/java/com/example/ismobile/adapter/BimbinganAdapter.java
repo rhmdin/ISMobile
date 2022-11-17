@@ -1,6 +1,6 @@
 package com.example.ismobile.adapter;
 import com.example.ismobile.R;
-import com.example.ismobile.models.Bimbingan;
+import com.example.ismobile.model.Bimbingan;
 
 import android.content.Context;
 import android.view.LayoutInflater;

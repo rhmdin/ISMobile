@@ -23,7 +23,6 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/orange_500"
@@ -60,7 +59,6 @@
         app:srcCompat="@drawable/form" />
 
     <View
-        android:id="@+id/divider11"
         android:layout_width="300dp"
         android:layout_height="1dp"
         android:layout_marginTop="52dp"
@@ -69,7 +67,6 @@
         app:layout_constraintTop_toBottomOf="@+id/divider10" />
 
     <TextView
-        android:id="@+id/textView55"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato_regular"
@@ -95,7 +92,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
     <TextView
-        android:id="@+id/textView54"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato_regular"
@@ -182,7 +178,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView53" />
 
     <Button
-        android:id="@+id/buttonTerimaJadwalSemhas"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -244,7 +239,6 @@
         app:layout_constraintTop_toBottomOf="@+id/divider7" />
 
     <TextView
-        android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"

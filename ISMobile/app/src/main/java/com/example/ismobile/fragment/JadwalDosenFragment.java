@@ -1,6 +1,7 @@
-package com.example.ismobile;
+package com.example.ismobile.fragment;
+import com.example.ismobile.R;
 import com.example.ismobile.adapter.*;
-import com.example.ismobile.models.*;
+import com.example.ismobile.model.*;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
