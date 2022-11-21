@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         if(usn!=null){
             Intent login2main = new Intent(LoginActivity.this, MainActivity.class);
             login2main.putExtra("username", usn);
-            Toast.makeText(LoginActivity.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Berhasil Login" + usn, Toast.LENGTH_SHORT).show();
             startActivity(login2main);
         } else {
             Toast.makeText(LoginActivity.this, "Gagal Login", Toast.LENGTH_SHORT).show();

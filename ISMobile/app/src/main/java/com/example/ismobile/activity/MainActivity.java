@@ -1,45 +1,61 @@
 package com.example.ismobile.activity;
 import com.example.ismobile.R;
-import com.example.ismobile.fragment.ProfileFragment;
-import com.example.ismobile.fragment.HomeFragment;
-import com.example.ismobile.fragment.RequestFragment;
-import com.example.ismobile.fragment.JadwalDosenFragment;
+import com.example.ismobile.fragment.*;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import com.example.ismobile.databinding.ActivityMainBinding;
+
+import android.view.MenuItem;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
+    BottomNavigationView bottomNavigationView;
+
+    HomeFragment homeFragment = new HomeFragment();
+    RequestFragment requestFragment = new RequestFragment();
+    JadwalDosenFragment jadwaldosenFragment = new JadwalDosenFragment();
+    ProfileFragment profileFragment = new ProfileFragment();
+
+    public TextView tv_usn;
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        replaceFragment(new HomeFragment());
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
-                case R.id.homeFragment:
-                    replaceFragment(new HomeFragment());
-                    break;
-                case R.id.requestFragment:
-                    replaceFragment(new RequestFragment());
-                    break;
-                case R.id.listFragment:
-                    replaceFragment(new JadwalDosenFragment());
-                    break;
-                case R.id.profileFragment:
-                    replaceFragment(new ProfileFragment());
-                    break;
+        setContentView(R.layout.activity_main);
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        String usn = getIntent().getStringExtra("username");
+        Log.d("nama", "onCreate: " +usn);
+        Bundle bundle = new Bundle();
+        bundle.putString("username", usn);
+        homeFragment.setArguments(bundle);
+        profileFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, homeFragment).commit();
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.homeFragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, homeFragment).commit();
+                        return true;
+                    case R.id.requestFragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, requestFragment).commit();
+                        return true;
+                    case R.id.jadwaldosenFragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, jadwaldosenFragment).commit();
+                        return true;
+                    case R.id.profileFragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, profileFragment).commit();
+                        return true;
+                }
+                return false;
             }
-            return true;
         });
-    }
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
     }
 }

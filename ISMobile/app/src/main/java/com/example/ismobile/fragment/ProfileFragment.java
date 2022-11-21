@@ -2,9 +2,11 @@ package com.example.ismobile.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +33,8 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private TextView tv_usn;
+    private String usn;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -68,8 +72,20 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootview = LayoutInflater.from(getContext()).inflate(R.layout.fragment_profile, container, false);
+        tv_usn = rootview.findViewById(R.id.profile_nama);
+        Bundle bundle = getArguments();
+
+        if (bundle!=null){
+            usn = bundle.getString("username");
+            Log.d("status", "Alhamdulillah: "+ usn);
+            tv_usn.setText(usn);
+        }
+        else {
+            Log.d("status", "semangatt dina");
+        }
+
         // Inflate the layout for this fragment
-        View rootview = inflater.inflate(R.layout.fragment_profile, container, false);
         TextView edit_profile = rootview.findViewById(R.id.profile_edit);
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override

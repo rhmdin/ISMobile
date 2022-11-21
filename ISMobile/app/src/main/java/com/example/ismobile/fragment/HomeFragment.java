@@ -6,10 +6,12 @@ import com.example.ismobile.model.*;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,7 +35,8 @@ public class HomeFragment extends Fragment {
     private String[] bimbingan_nama, bimbingan_nim;
     private int[] bimbingan_avaID;
     private RecyclerView recyclerview;
-
+    private TextView tv_usn;
+    private String usn;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -67,8 +70,20 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootview = inflater.inflate(R.layout.fragment_home, container, false);
+        View rootview = LayoutInflater.from(getContext()).inflate(R.layout.fragment_home, container, false);
         ImageButton logout = rootview.findViewById(R.id.btn_logout);
+        tv_usn = rootview.findViewById(R.id.home_usn);
+        Bundle bundle = getArguments();
+
+        if (bundle!=null){
+            usn = bundle.getString("username");
+            Log.d("status", "Alhamdulillah: "+ usn);
+            tv_usn.setText(usn);
+        }
+        else {
+            Log.d("status", "semangatt dina");
+        }
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
