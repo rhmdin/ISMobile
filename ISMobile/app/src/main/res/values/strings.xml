@@ -45,6 +45,8 @@
     <string name="jam2">10.00 WIB</string>
 
     <string name="tempat1">Ruang Seminar E</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
