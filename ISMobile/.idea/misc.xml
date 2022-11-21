@@ -84,12 +84,22 @@
         <entry key="..\:/SEMESTER 7/PTB/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/SEMESTER 7/PTB/app/src/main/res/layout/login.xml" value="0.264" />
         <entry key="..\:/SEMESTER 7/PTB/app/src/main/res/layout/splashscreen.xml" value="0.1875" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/drawable/form.xml" value="0.1" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/drawable/form2.xml" value="0.1" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/activity_catatan_rekomendasi.xml" value="0.14479166666666668" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/activity_detail_jadwal_seminar.xml" value="0.1" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/activity_detail_mahasiswa.xml" value="0.1" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/activity_form_batal_ta.xml" value="0.2" />
         <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/activity_splashscreen.xml" value="0.14479166666666668" />
-        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/fragment_home.xml" value="0.12182971014492754" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/fragment_bimbingan.xml" value="0.22" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/fragment_bimbingan_ta.xml" value="0.1" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/fragment_jadwaldosen.xml" value="0.5" />
         <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/fragment_profile.xml" value="0.11614583333333334" />
+        <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/fragment_request.xml" value="0.18" />
         <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/list_jadwaldosen.xml" value="0.22" />
         <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/layout/list_logbook.xml" value="0.1" />
         <entry key="..\:/SIUNAND/COURSES/5/PTB_B/ISMobile/ISMobile/app/src/main/res/menu/menu.xml" value="0.1203125" />

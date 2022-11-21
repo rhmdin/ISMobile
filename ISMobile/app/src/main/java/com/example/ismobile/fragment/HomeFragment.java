@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,7 +36,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<Bimbingan> bimbinganArrayList;
     private String[] bimbingan_nama, bimbingan_nim;
     private int[] bimbingan_avaID;
-    private RecyclerView recyclerview;
+    private RecyclerView rv_bimbingan;
     private TextView tv_usn;
     private String usn;
     public HomeFragment() {
@@ -71,7 +73,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview = LayoutInflater.from(getContext()).inflate(R.layout.fragment_home, container, false);
-        ImageButton logout = rootview.findViewById(R.id.btn_logout);
         tv_usn = rootview.findViewById(R.id.home_usn);
         Bundle bundle = getArguments();
 
@@ -84,13 +85,25 @@ public class HomeFragment extends Fragment {
             Log.d("status", "semangatt dina");
         }
 
+        ImageButton logout = rootview.findViewById(R.id.btn_logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+                Intent home2logout = new Intent(getActivity(), LoginActivity.class);
+                startActivity(home2logout);
             }
         });
+
+        ImageButton home2bimbingan = rootview.findViewById(R.id.btn_homebimbingan);
+        home2bimbingan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_layout, new BimbinganFragment());
+                fr.commit();
+            }
+        });
+
         return rootview;
     }
 
@@ -99,11 +112,11 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         dataInitialized();
-        recyclerview = view.findViewById(R.id.recview_bimbingan);
-        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerview.setHasFixedSize(true);
+        rv_bimbingan = view.findViewById(R.id.recview_bimbingan);
+        rv_bimbingan.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv_bimbingan.setHasFixedSize(true);
         BimbinganAdapter myAdapter = new BimbinganAdapter(getContext(), bimbinganArrayList);
-        recyclerview.setAdapter(myAdapter);
+        rv_bimbingan.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
     }
 
@@ -153,8 +166,5 @@ public class HomeFragment extends Fragment {
 
 
     }
-
-    ImageButton btn_logout;
-
 
 }
