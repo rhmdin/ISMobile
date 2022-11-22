@@ -143,6 +143,7 @@ public class BimbinganFragment extends Fragment implements BimbinganAdapter.Item
     public void onItemBimbinganClick(Bimbingan bimbingan) {
         Toast.makeText(getContext(), "Nama: "+bimbingan.nama, Toast.LENGTH_SHORT).show();
         Intent bimbingandetail = new Intent(getActivity(), DetailMahasiswaActivity.class);
+        bimbingandetail.putExtra("bimbingan_nama", bimbingan.nama);
         startActivity(bimbingandetail);
     }
 }
