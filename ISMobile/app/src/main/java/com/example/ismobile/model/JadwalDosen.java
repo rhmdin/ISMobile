@@ -21,4 +21,3 @@ public class JadwalDosen {
         this.tempat = tempat;
     }
 }
-

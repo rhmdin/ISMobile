@@ -1,12 +1,15 @@
 package com.example.ismobile.fragment;
 import com.example.ismobile.R;
+import com.example.ismobile.activity.*;
 import com.example.ismobile.adapter.*;
 import com.example.ismobile.model.*;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +24,7 @@ import java.util.ArrayList;
  * Use the {@link JadwalDosenFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class JadwalDosenFragment extends Fragment {
+public class JadwalDosenFragment extends Fragment implements JadwalDosenAdapter.ItemUndanganClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,6 +85,7 @@ public class JadwalDosenFragment extends Fragment {
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
         JadwalDosenAdapter myAdapter = new JadwalDosenAdapter(getContext(), jadwaldosenArrayList);
+        myAdapter.setListener(this);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
     }
@@ -125,15 +129,15 @@ public class JadwalDosenFragment extends Fragment {
                 getString(R.string.waktu3),
         };
         jadwaldosen_kategori = new String[]{
+                getString(R.string.kategori1),
                 getString(R.string.kategori2),
+                getString(R.string.kategori1),
                 getString(R.string.kategori2),
+                getString(R.string.kategori1),
                 getString(R.string.kategori2),
+                getString(R.string.kategori1),
                 getString(R.string.kategori2),
-                getString(R.string.kategori2),
-                getString(R.string.kategori2),
-                getString(R.string.kategori2),
-                getString(R.string.kategori2),
-                getString(R.string.kategori2),
+                getString(R.string.kategori1),
                 getString(R.string.kategori2),
         };
         jadwaldosen_jam = new String[]{
@@ -180,5 +184,13 @@ public class JadwalDosenFragment extends Fragment {
         }
 
 
+    }
+
+    @Override
+    public void onItemUndanganClick(JadwalDosen jadwaldosen) {
+        Toast.makeText(getContext(), "Kategori: "+jadwaldosen.kategori, Toast.LENGTH_SHORT).show();
+        Intent undangandetail = new Intent(getActivity(), DetailUndanganActivity.class);
+        undangandetail.putExtra("undangan_kategori", jadwaldosen.kategori);
+        startActivity(undangandetail);
     }
 }

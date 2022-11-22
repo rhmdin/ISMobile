@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_undangan"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -53,13 +54,13 @@
             android:id="@+id/jadwaldosen_kategori"
             android:layout_width="295dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             android:text="@string/kategori1"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.35"
+            app:layout_constraintHorizontal_bias="0.164"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,8 +89,8 @@
 
         <TextView
             android:id="@+id/jadwaldosen_skripsi"
-            android:layout_width="309dp"
-            android:layout_height="54dp"
+            android:layout_width="331dp"
+            android:layout_height="51dp"
             android:text="@string/skripsi1"
             android:textColor="@color/black"
             android:textSize="15sp"

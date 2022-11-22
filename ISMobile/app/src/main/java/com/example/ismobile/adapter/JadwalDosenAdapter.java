@@ -1,4 +1,5 @@
 package com.example.ismobile.adapter;
+import com.example.ismobile.model.Bimbingan;
 import com.example.ismobile.model.JadwalDosen;
 
 import android.content.Context;
@@ -19,10 +20,25 @@ public class JadwalDosenAdapter extends RecyclerView.Adapter<JadwalDosenAdapter.
 
     Context context;
     ArrayList<JadwalDosen> jadwaldosenArrayList;
+    JadwalDosenAdapter.ItemUndanganClickListener undanganClickListener;
+
     public JadwalDosenAdapter(Context context, ArrayList<JadwalDosen> jadwaldosenArrayList){
         this.context = context;
         this.jadwaldosenArrayList = jadwaldosenArrayList;
 
+    }
+
+    public JadwalDosenAdapter(ArrayList<JadwalDosen> jadwaldosenArrayList, ItemUndanganClickListener undanganClickListener) {
+        this.jadwaldosenArrayList = jadwaldosenArrayList;
+        this.undanganClickListener = undanganClickListener;
+    }
+
+    public void setJadwaldosenArrayList(ArrayList<JadwalDosen> jadwaldosenArrayList) {
+        this.jadwaldosenArrayList = jadwaldosenArrayList;
+    }
+
+    public void setListener(ItemUndanganClickListener undanganClickListener) {
+        this.undanganClickListener = undanganClickListener;
     }
 
     @NonNull
@@ -51,8 +67,11 @@ public class JadwalDosenAdapter extends RecyclerView.Adapter<JadwalDosenAdapter.
     public int getItemCount() {
         return jadwaldosenArrayList.size();
     }
+    public interface  ItemUndanganClickListener{
+        void onItemUndanganClick(JadwalDosen jadwaldosen);
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    }
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ShapeableImageView jadwaldosen_ava;
         TextView jadwaldosen_nama;
@@ -72,6 +91,14 @@ public class JadwalDosenAdapter extends RecyclerView.Adapter<JadwalDosenAdapter.
             jadwaldosen_skripsi = itemView.findViewById(R.id.jadwaldosen_skripsi);
             jadwaldosen_jam = itemView.findViewById(R.id.jadwaldosen_jam);
             jadwaldosen_tempat = itemView.findViewById(R.id.jadwaldosen_tempat);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            JadwalDosen jadwaldosen = jadwaldosenArrayList.get(getAdapterPosition());
+            undanganClickListener.onItemUndanganClick(jadwaldosen);
         }
     }
 }
