@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.DetailMahasiswaActivity">
+    tools:context=".activity.DetailMahasiswaActivity"
+    android:background="#FFFF">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar8"
@@ -18,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/imageButton"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,101 +57,80 @@
         app:srcCompat="@drawable/ic_check"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/detailmhs_nim"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="8dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="2011522018"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/detailmhs_nama"
+        app:layout_constraintTop_toBottomOf="@+id/detailmhs_nama" />
+
+    <Button
+        android:id="@+id/detail_btn_nilai"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="153dp"
+        android:layout_height="48dp"
+        android:drawableLeft="@drawable/ic_input_nilai"
+        android:fontFamily="@font/poppins_extrabold"
+        android:text="Input Nilai"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/detailmhs_sejak"
+        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintStart_toEndOf="@+id/detail_btn_cancel"
+        app:layout_constraintTop_toTopOf="@+id/detail_btn_cancel" />
+
+    <Button
+        android:id="@+id/detail_btn_cancel"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="142dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_reject"
+        android:fontFamily="@font/poppins_extrabold"
+        android:text="Batalkan"
+        android:textColor="#8B1A10"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/detailmhs_sejak"
+        app:layout_constraintTop_toBottomOf="@+id/detailmhs_sejak" />
+
+    <TextView
+        android:id="@+id/detailmhs_sejak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/lato_italic"
+        android:text="Bimbingan sejak 10/10/2022"
+        android:textColor="#9F9E9E"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/detailmhs_nim"
+        app:layout_constraintTop_toBottomOf="@+id/detailmhs_nim" />
+
+    <TextView
+        android:id="@+id/detailmhs_nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Ruth Emeralda"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/detailmhs_ava"
+        app:layout_constraintTop_toTopOf="@+id/detailmhs_ava" />
+
+    <ImageView
+        android:id="@+id/detailmhs_ava"
+        android:layout_width="71dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar8">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="154dp">
-
-            <ImageView
-                android:id="@+id/detailmhs_ava"
-                android:layout_width="73dp"
-                android:layout_height="83dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.225"
-                app:srcCompat="@drawable/ic_profile" />
-
-            <TextView
-                android:id="@+id/detailmhs_nama"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="Ruth Emeralda"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/detailmhs_ava"
-                app:layout_constraintTop_toTopOf="@+id/detailmhs_ava" />
-
-            <TextView
-                android:id="@+id/detailmhs_nim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="2011522018"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/detailmhs_nama"
-                app:layout_constraintTop_toBottomOf="@+id/detailmhs_nama" />
-
-            <TextView
-                android:id="@+id/detailmhs_sejak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/lato_italic"
-                android:text="Bimbingan sejak 10/10/2022"
-                android:textColor="#9F9E9E"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/detailmhs_nim"
-                app:layout_constraintTop_toBottomOf="@+id/detailmhs_nim" />
-
-            <Button
-                android:id="@+id/detail_btn_cancel"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="159dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="4dp"
-                android:drawableLeft="@drawable/ic_reject"
-                android:fontFamily="@font/poppins_extrabold"
-                android:text="Batalkan"
-                android:textColor="#8B1A10"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/detailmhs_sejak"
-                app:layout_constraintTop_toBottomOf="@+id/detailmhs_sejak" />
-
-            <Button
-                android:id="@+id/detail_btn_nilai"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="153dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="32dp"
-                android:drawableLeft="@drawable/ic_input_nilai"
-                android:fontFamily="@font/poppins_extrabold"
-                android:text="Input Nilai"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/detail_btn_cancel"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/detail_btn_cancel"
-                app:layout_constraintTop_toTopOf="@+id/detail_btn_cancel"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar8"
+        app:srcCompat="@drawable/ic_profile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
