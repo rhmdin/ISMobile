@@ -19,10 +19,24 @@ public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyVi
 
     Context context;
     ArrayList<Bimbingan> bimbinganArrayList;
+
+    ItemBimbinganClickListener bimbinganClickListener;
+
     public BimbinganAdapter(Context context, ArrayList<Bimbingan> bimbinganArrayList){
         this.context = context;
         this.bimbinganArrayList = bimbinganArrayList;
 
+    }
+
+    public void setListener(ItemBimbinganClickListener bimbinganClickListener) {
+        this.bimbinganClickListener = bimbinganClickListener;
+    }
+    public BimbinganAdapter(ArrayList<Bimbingan> bimbinganArrayList, ItemBimbinganClickListener bimbinganClickListener) {
+        this.bimbinganArrayList = bimbinganArrayList;
+        this.bimbinganClickListener = bimbinganClickListener;
+    }
+    public void setBimbinganArrayList(ArrayList<Bimbingan> bimbinganArrayList) {
+        this.bimbinganArrayList = bimbinganArrayList;
     }
 
     @NonNull
@@ -48,12 +62,16 @@ public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyVi
         return bimbinganArrayList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public interface  ItemBimbinganClickListener{
+        void onItemBimbinganClick(Bimbingan bimbingan);
+
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ShapeableImageView bimbingan_ava;
         TextView bimbingan_nama;
         TextView bimbingan_nim;
-
 
 
         public MyViewHolder(@NonNull View itemView){
@@ -61,6 +79,14 @@ public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyVi
             bimbingan_ava = itemView.findViewById(R.id.bimbingan_ava);
             bimbingan_nama = itemView.findViewById(R.id.bimbingan_nama);
             bimbingan_nim = itemView.findViewById(R.id.bimbingan_nim);
+
+            itemView.setOnClickListener(this);
+
+        }
+
+        public void onClick(View view) {
+            Bimbingan bimbingan = bimbinganArrayList.get(getAdapterPosition());
+            bimbinganClickListener.onItemBimbinganClick(bimbingan);
         }
     }
 }

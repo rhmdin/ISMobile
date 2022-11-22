@@ -1,12 +1,16 @@
 package com.example.ismobile.fragment;
 import com.example.ismobile.R;
+import com.example.ismobile.activity.DetailMahasiswaActivity;
+import com.example.ismobile.activity.LoginActivity;
 import com.example.ismobile.adapter.*;
 import com.example.ismobile.model.*;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +25,7 @@ import java.util.ArrayList;
  * Use the {@link BimbinganFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BimbinganFragment extends Fragment {
+public class BimbinganFragment extends Fragment implements BimbinganAdapter.ItemBimbinganClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,6 +87,7 @@ public class BimbinganFragment extends Fragment {
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
         BimbinganAdapter myAdapter = new BimbinganAdapter(getContext(), bimbinganArrayList);
+        myAdapter.setListener(this);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
     }
@@ -132,5 +137,12 @@ public class BimbinganFragment extends Fragment {
         }
 
 
+    }
+
+    @Override
+    public void onItemBimbinganClick(Bimbingan bimbingan) {
+        Toast.makeText(getContext(), "Nama: "+bimbingan.nama, Toast.LENGTH_SHORT).show();
+        Intent bimbingandetail = new Intent(getActivity(), DetailMahasiswaActivity.class);
+        startActivity(bimbingandetail);
     }
 }
