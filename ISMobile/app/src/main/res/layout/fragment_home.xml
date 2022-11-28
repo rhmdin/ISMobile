@@ -76,67 +76,87 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/container_dosen"
-        android:layout_width="350dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/white" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="326dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:backgroundTint="@android:color/white"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_logout"
+        app:layout_constraintStart_toStartOf="@+id/imageView46"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3">
 
-    <TextView
-        android:id="@+id/msg_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="6dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Selamat Datang"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/container_dosen"
-        app:layout_constraintTop_toTopOf="@+id/container_dosen" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/home_usn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Husnil Kamil, M.T."
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/msg_welcome"
-        app:layout_constraintTop_toBottomOf="@+id/msg_welcome" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="81dp"
+                android:layout_height="81dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/photo_profile"
+                app:layout_constraintBottom_toBottomOf="@+id/bimbingan_ket2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/msg_welcome"
+                app:layout_constraintVertical_bias="0.545" />
 
-    <TextView
-        android:id="@+id/judul_bimbingan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="Daftar Mahasiswa Bismbingan TA"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/container_dosen"
-        app:layout_constraintTop_toBottomOf="@+id/container_dosen" />
+            <TextView
+                android:id="@+id/msg_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Selamat Datang"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/home_usn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Husnil Kamil, M.T."
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/msg_welcome"
+                app:layout_constraintTop_toBottomOf="@+id/msg_welcome" />
+
+            <TextView
+                android:id="@+id/bimbingan_ket2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_italic"
+                android:text="198201182008121002"
+                android:textColor="#9F9E9E"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/msg_welcome"
+                app:layout_constraintTop_toBottomOf="@+id/home_usn" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <ImageButton
         android:id="@+id/btn_homebimbingan"
-        android:layout_width="348dp"
-        android:layout_height="422dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="345dp"
+        android:layout_height="405dp"
+        android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:contentDescription="TODO"
         android:minWidth="48dp"
         android:minHeight="48dp"
         android:onClick="btn_home_logout"
         android:src="@drawable/form"
-        app:layout_constraintEnd_toEndOf="@+id/container_dosen"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/container_dosen"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/judul_bimbingan"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -144,7 +164,6 @@
         android:id="@+id/more"
         android:layout_width="72dp"
         android:layout_height="25dp"
-        android:layout_marginStart="280dp"
         android:fontFamily="@font/roboto_medium"
         android:text="more..."
         android:textColor="#000000"
@@ -152,8 +171,6 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/btn_homebimbingan"
         app:layout_constraintEnd_toEndOf="@+id/recview_bimbingan"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/container_dosen"
         app:layout_constraintTop_toBottomOf="@+id/recview_bimbingan"
         app:layout_constraintVertical_bias="0.444" />
 
@@ -169,6 +186,20 @@
         app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan"
         app:layout_constraintVertical_bias="0.129"
         tools:listitem="@layout/list_bimbingan" />
+
+    <TextView
+        android:id="@+id/judul_bimbingan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Mahasiswa Bismbingan TA"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_logout"
+        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintStart_toStartOf="@+id/imageView46"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
