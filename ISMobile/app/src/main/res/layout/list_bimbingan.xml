@@ -1,106 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_bimbingan"
     android:layout_width="350dp"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginVertical="10dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginBottom="10dp"
+    android:layout_height="80dp"
     android:background="@color/white"
     android:foreground="?android:attr/selectableItemBackground"
-    android:padding="10dp"
-    android:paddingVertical="10dp"
-    app:cardBackgroundColor="#FFFF"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="16dp">
+    app:cardBackgroundColor="#FFFF">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible">
+    <ImageButton
+        android:id="@+id/btn_homebimbingan2"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="TODO"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="btn_home_logout"
+        android:src="@drawable/form"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-        <ImageButton
-            android:id="@+id/btn_homebimbingan2"
-            android:layout_width="350dp"
-            android:layout_height="94dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="TODO"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:onClick="btn_home_logout"
-            android:src="@drawable/form"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:ignore="SpeakableTextPresentCheck" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/bimbingan_ava"
+        android:layout_width="57dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="12dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_profile"
+        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan2"
+        app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan2" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/bimbingan_ava"
-            android:layout_width="57dp"
-            android:layout_height="60dp"
-            android:layout_margin="16dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.476" />
+    <TextView
+        android:id="@+id/bimbingan_ket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_italic"
+        android:text="Bimbingan sejak 10/10/2022"
+        android:textColor="#9F9E9E"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bimbingan_ava"
+        app:layout_constraintStart_toStartOf="@+id/bimbingan_nim"
+        app:layout_constraintTop_toBottomOf="@+id/bimbingan_nim" />
 
-        <TextView
-            android:id="@+id/bimbingan_nama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_bold"
-            android:text="@string/bimbingan_nama_2"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.069"
-            app:layout_constraintStart_toEndOf="@+id/bimbingan_ava"
-            app:layout_constraintTop_toTopOf="@+id/bimbingan_ava" />
+    <TextView
+        android:id="@+id/bimbingan_nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/bimbingan_nama_2"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/bimbingan_ava"
+        app:layout_constraintTop_toTopOf="@+id/bimbingan_ava" />
 
-        <TextView
-            android:id="@+id/bimbingan_nim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:fontFamily="@font/lato_regular"
-            android:text="@string/bimbingan_nim_2"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/bimbingan_nama"
-            app:layout_constraintTop_toBottomOf="@+id/bimbingan_nama" />
-
-        <TextView
-            android:id="@+id/bimbingan_ket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_italic"
-            android:text="Bimbingan sejak 10/10/2022"
-            android:textColor="#9F9E9E"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/bimbingan_ava"
-            app:layout_constraintEnd_toEndOf="@+id/bimbingan_nama"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/bimbingan_nama"
-            app:layout_constraintTop_toBottomOf="@+id/bimbingan_nim" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/bimbingan_nim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:text="@string/bimbingan_nim_2"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/bimbingan_nama"
+        app:layout_constraintTop_toBottomOf="@+id/bimbingan_nama" />
 
 
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
