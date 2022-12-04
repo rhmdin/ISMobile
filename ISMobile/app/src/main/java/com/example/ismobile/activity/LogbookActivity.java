@@ -4,17 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.ismobile.R;
 import com.example.ismobile.adapter.LogbookAdapter;
+import com.example.ismobile.model.Bimbingan;
 import com.example.ismobile.model.Logbook;
 
 import java.util.ArrayList;
 
-public class LogbookActivity extends AppCompatActivity {
+public class LogbookActivity extends AppCompatActivity implements LogbookAdapter.ItemLogbookClickListener {
 
     private RecyclerView rv_logbook;
+    private ArrayList<Logbook> listlogbook;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +54,8 @@ public class LogbookActivity extends AppCompatActivity {
                 "12/02/2003",
                 "Revisi bab pembahasan",
                 1
-        ));        listLogbook.add(new Logbook(
+        ));
+        listLogbook.add(new Logbook(
                 "01/05/2002",
                 "fames ac turpis egestas sed",
                 1
@@ -82,5 +87,12 @@ public class LogbookActivity extends AppCompatActivity {
         ));
 
         return listLogbook;
+    }
+
+    @Override
+    public void onItemLogbookClick(Logbook logbook) {
+        Toast.makeText(LogbookActivity.this, "Buka Logbook " + logbook.getTgl(), Toast.LENGTH_SHORT).show();
+        Intent logbookdetail = new Intent(LogbookActivity.this, LogbookDetailActivity.class);
+        startActivity(logbookdetail);
     }
 }

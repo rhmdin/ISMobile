@@ -11,16 +11,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ismobile.R;
+import com.example.ismobile.model.Bimbingan;
 import com.example.ismobile.model.Logbook;
 
 import java.util.ArrayList;
 
 public class LogbookAdapter extends RecyclerView.Adapter<LogbookAdapter.MyViewHolder> {
 
-    ArrayList<Logbook> listLogbook = new ArrayList<>();
+    ArrayList<Logbook> listLogbook;
+    LogbookAdapter.ItemLogbookClickListener logbookClickListener;
 
     public LogbookAdapter(ArrayList<Logbook> listLogbook) {
         this.listLogbook = listLogbook;
+    }
+
+    public LogbookAdapter(ArrayList<Logbook> listLogbook, ItemLogbookClickListener logbookClickListener) {
+        this.listLogbook = listLogbook;
+        this.logbookClickListener = logbookClickListener;
+    }
+
+    public void setLogbookClickListener(ItemLogbookClickListener logbookClickListener) {
+        this.logbookClickListener = logbookClickListener;
     }
 
     public void setListLogbook(ArrayList<Logbook> listLogbook) {
@@ -30,7 +41,8 @@ public class LogbookAdapter extends RecyclerView.Adapter<LogbookAdapter.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.list_logbook, parent, false));
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_logbook, parent, false);
+        return new MyViewHolder(v);
     }
 
     @Override
@@ -48,15 +60,27 @@ public class LogbookAdapter extends RecyclerView.Adapter<LogbookAdapter.MyViewHo
         return listLogbook.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public interface  ItemLogbookClickListener{
+        void onItemLogbookClick(Logbook logbook);
+
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView tgl, ket;
         public ImageButton detail;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tgl = itemView.findViewById(R.id.logbook_tgl);
             ket = itemView.findViewById(R.id.logbook_ket);
             detail = itemView.findViewById(R.id.logbook_btn_detail);
+            itemView.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View v) {
+            Logbook logbook = listLogbook.get(getAdapterPosition());
+            logbookClickListener.onItemLogbookClick(logbook);
         }
     }
 }
