@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -112,7 +111,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         dataInitialized();
-        rv_bimbingan = view.findViewById(R.id.recview_bimbingan);
+        rv_bimbingan = view.findViewById(R.id.recview_logbook);
         rv_bimbingan.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_bimbingan.setHasFixedSize(true);
         BimbinganAdapter myAdapter = new BimbinganAdapter(getContext(), bimbinganArrayList);

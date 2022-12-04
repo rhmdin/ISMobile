@@ -1,7 +1,6 @@
 package com.example.ismobile.fragment;
 import com.example.ismobile.R;
 import com.example.ismobile.activity.DetailMahasiswaActivity;
-import com.example.ismobile.activity.LoginActivity;
 import com.example.ismobile.adapter.*;
 import com.example.ismobile.model.*;
 
@@ -83,7 +82,7 @@ public class BimbinganFragment extends Fragment implements BimbinganAdapter.Item
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         dataInitialized();
-        recyclerview = view.findViewById(R.id.recview_bimbingan);
+        recyclerview = view.findViewById(R.id.recview_logbook);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
         BimbinganAdapter myAdapter = new BimbinganAdapter(getContext(), bimbinganArrayList);
