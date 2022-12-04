@@ -33,37 +33,36 @@ public class LogbookActivity extends AppCompatActivity {
         ArrayList<Logbook> listLogbook = new ArrayList<>();
         listLogbook.add(new Logbook(
                 "01/05/2002",
-                "Revisi bab pendahuluan",
+                "fames ac turpis egestas sed",
+                1
+        ));
+        listLogbook.add(new Logbook(
+                "12/02/2003",
+                "bibendum est ultricies integer quis auctor elit sed vulputate mi sit amet mauris commodo quis",
+                1
+        ));
+        listLogbook.add(new Logbook(
+                "01/05/2002",
+                "bibendum arcu vitae elementum curabitur vitae nunc sed velit dignissim",
                 1
         ));
         listLogbook.add(new Logbook(
                 "12/02/2003",
                 "Revisi bab pembahasan",
                 1
-        ));
-        listLogbook.add(new Logbook(
+        ));        listLogbook.add(new Logbook(
                 "01/05/2002",
-                "Revisi bab pendahuluan",
+                "fames ac turpis egestas sed",
                 1
         ));
         listLogbook.add(new Logbook(
                 "12/02/2003",
-                "Revisi bab pembahasan",
+                "bibendum est ultricies integer quis auctor elit sed vulputate mi sit amet mauris commodo quis",
                 1
         ));
         listLogbook.add(new Logbook(
                 "01/05/2002",
-                "Revisi bab pendahuluan",
-                1
-        ));
-        listLogbook.add(new Logbook(
-                "12/02/2003",
-                "Revisi bab pembahasan",
-                1
-        ));
-        listLogbook.add(new Logbook(
-                "01/05/2002",
-                "Revisi bab pendahuluan",
+                "bibendum arcu vitae elementum curabitur vitae nunc sed velit dignissim",
                 1
         ));
         listLogbook.add(new Logbook(
