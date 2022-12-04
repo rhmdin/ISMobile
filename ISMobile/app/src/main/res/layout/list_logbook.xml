@@ -28,7 +28,7 @@
         android:fontFamily="@font/lato_regular"
 
         android:text="Melakukan survei lapangan dan pengumpulan data"
-        android:textAlignment="viewEnd"
+        android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"

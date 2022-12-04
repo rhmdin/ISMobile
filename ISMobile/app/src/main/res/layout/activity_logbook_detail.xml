@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LogbookDetailActivity"
+    android:background="#EFEFEF">
+
+    <ImageButton
+        android:id="@+id/ib_mhsbim_icon_cancel2"
+        android:layout_width="57dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintHorizontal_bias="0.575"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintVertical_bias="0.329"
+        app:srcCompat="@drawable/ic_round_check_box_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tv_mhsbim_jadwal6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold_italic"
+        android:text="Setujui"
+        android:textColor="#1D7943"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ib_mhsbim_icon_cancel2"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="@+id/ib_mhsbim_icon_cancel2"
+        app:layout_constraintTop_toBottomOf="@+id/ib_mhsbim_icon_cancel2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/btn_homebimbingan6"
+        android:layout_width="340dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="TODO"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/form"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar11"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="42dp"
+        android:layout_height="52dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_homebimbingan6"
+        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan6"
+        app:layout_constraintTop_toTopOf="@+id/divy_logbooknilai3"
+        app:srcCompat="@drawable/ic_round_file_ta" />
+
+    <View
+        android:id="@+id/divy_logbooknilai3"
+        android:layout_width="1dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="24dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_homebimbingan6"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toEndOf="@+id/ib_mhsbim_icon_nilai"
+        app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan6"
+        app:layout_constraintVertical_bias="0.352" />
+
+    <TextView
+        android:id="@+id/tv_mhsbim_jadwal5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold_italic"
+        android:text="File TA"
+        android:textColor="#C76B00"
+        android:textSize="4pt"
+        app:layout_constraintBottom_toBottomOf="@+id/divy_logbooknilai3"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton2"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="@+id/imageButton2"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/detailmhs_nama2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Ruth Emeralda"
+        android:textColor="#000000"
+        android:textSize="8pt"
+        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan6"
+        app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan6" />
+
+    <TextView
+        android:id="@+id/detailmhs_nim2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="2011522018"
+        android:textColor="#000000"
+        android:textSize="6pt"
+        app:layout_constraintStart_toStartOf="@+id/detailmhs_nama2"
+        app:layout_constraintTop_toBottomOf="@+id/detailmhs_nama2" />
+
+    <TextView
+        android:id="@+id/detailmhs_nim3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Logbook 20/11/2022"
+        android:textColor="#000000"
+        android:textSize="6pt"
+        app:layout_constraintStart_toStartOf="@+id/detailmhs_nim2"
+        app:layout_constraintTop_toBottomOf="@+id/detailmhs_nim2" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/logbook_aktivitas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins"
+        android:text="Aktivitas"
+        android:textColor="#1C1B1B"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan6"
+        app:layout_constraintTop_toBottomOf="@+id/btn_homebimbingan6" />
+
+    <TextView
+        android:id="@+id/logbook_aktivitas4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins"
+        android:text="Feedback"
+        android:textColor="#1C1B1B"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/logbook_aktivitas"
+        app:layout_constraintTop_toBottomOf="@+id/logbook_aktivitas2" />
+
+    <TextView
+        android:id="@+id/logbook_aktivitas2"
+        android:layout_width="331dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:fontFamily="@font/poppins"
+        android:outlineProvider="none"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla est ullamcorper eget nulla facilisi."
+        android:textColor="#1C1B1B"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_homebimbingan6"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan6"
+        app:layout_constraintTop_toBottomOf="@+id/logbook_aktivitas" />
+
+    <TextView
+        android:id="@+id/logbookdtl_judul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Detail Logbook"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/logbook_btn_back2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toEndOf="@+id/logbook_btn_back2"
+        app:layout_constraintTop_toTopOf="@+id/logbook_btn_back2"
+        app:layout_constraintVertical_bias="0.846" />
+
+    <ImageButton
+        android:id="@+id/logbook_btn_back2"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/orange_500"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_round_keyboard_arrow_left_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="334dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="325"
+        android:maxLines="5"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:text="isi feedback..."
+        app:layout_constraintEnd_toEndOf="@+id/logbook_aktivitas2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/logbook_aktivitas4"
+        app:layout_constraintTop_toBottomOf="@+id/logbook_aktivitas4" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
