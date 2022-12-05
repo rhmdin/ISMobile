@@ -14,16 +14,16 @@
         android:theme="@style/Theme.ISMobile"
         tools:targetApi="31">
         <activity
-            android:name=".DetailUndanganSeminarFeedbackActivity"
+            android:name=".activity.DetailUndanganSeminarFeedbackActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailUndanganSidangActivity"
+            android:name=".activity.DetailUndanganSidangActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailUndanganSeminarActivity"
+            android:name=".activity.DetailUndanganSeminarActivity"
             android:exported="false" />
         <activity
-            android:name=".InputNilaiActivity"
+            android:name=".activity.InputNilaiActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LogbookDetailActivity"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailUndanganSeminarFeedbackActivity">
+    tools:context=".activity.DetailUndanganSeminarFeedbackActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
-        android:drawableLeft="@drawable/ic_baseline_send_24"
+        android:drawableLeft="@drawable/ic_accept"
         android:fontFamily="@font/poppins_extrabold"
         android:text="Simpan"
         android:textColor="#48742C"
