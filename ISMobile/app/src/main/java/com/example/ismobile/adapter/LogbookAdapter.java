@@ -2,38 +2,40 @@ package com.example.ismobile.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import com.example.ismobile.R;
+import com.example.ismobile.model.*;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ismobile.R;
-import com.example.ismobile.model.Bimbingan;
-import com.example.ismobile.model.Logbook;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
+
 public class LogbookAdapter extends RecyclerView.Adapter<LogbookAdapter.MyViewHolder> {
 
+    Context context;
     ArrayList<Logbook> listLogbook;
-    LogbookAdapter.ItemLogbookClickListener logbookClickListener;
+    ItemLogbookClickListener logbookClickListener;
 
     public LogbookAdapter(ArrayList<Logbook> listLogbook) {
         this.listLogbook = listLogbook;
     }
-
+    public void setListener(ItemLogbookClickListener logbookClickListener) {
+        this.logbookClickListener = logbookClickListener;
+    }
     public LogbookAdapter(ArrayList<Logbook> listLogbook, ItemLogbookClickListener logbookClickListener) {
         this.listLogbook = listLogbook;
         this.logbookClickListener = logbookClickListener;
     }
-
-    public void setLogbookClickListener(ItemLogbookClickListener logbookClickListener) {
-        this.logbookClickListener = logbookClickListener;
-    }
-
     public void setListLogbook(ArrayList<Logbook> listLogbook) {
         this.listLogbook = listLogbook;
     }
@@ -50,24 +52,20 @@ public class LogbookAdapter extends RecyclerView.Adapter<LogbookAdapter.MyViewHo
         Logbook logbook = listLogbook.get(position);
         holder.tgl.setText(logbook.getTgl());
         holder.ket.setText(logbook.getKet());
-
-
     }
 
     @Override
     public int getItemCount() {
-
         return listLogbook.size();
     }
 
     public interface  ItemLogbookClickListener{
         void onItemLogbookClick(Logbook logbook);
-
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public TextView tgl, ket;
-        public ImageButton detail;
+        TextView tgl, ket;
+        ImageButton detail;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

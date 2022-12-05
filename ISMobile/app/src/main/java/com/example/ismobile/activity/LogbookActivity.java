@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.ismobile.R;
+import com.example.ismobile.adapter.BimbinganAdapter;
 import com.example.ismobile.adapter.LogbookAdapter;
-import com.example.ismobile.model.Bimbingan;
 import com.example.ismobile.model.Logbook;
 
 import java.util.ArrayList;
@@ -19,18 +19,18 @@ public class LogbookActivity extends AppCompatActivity implements LogbookAdapter
 
     private RecyclerView rv_logbook;
     private ArrayList<Logbook> listlogbook;
+    private String tgl,ket;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logbook);
-
         rv_logbook = findViewById(R.id.recview_logbook);
-
+        rv_logbook.setLayoutManager(new LinearLayoutManager(this));
+        rv_logbook.setHasFixedSize(true);
         LogbookAdapter adapter = new LogbookAdapter(getLogbook());
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-
-        rv_logbook.setLayoutManager(layoutManager);
+        adapter.setListener(this);
         rv_logbook.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     public ArrayList<Logbook> getLogbook(){
@@ -91,7 +91,8 @@ public class LogbookActivity extends AppCompatActivity implements LogbookAdapter
 
     @Override
     public void onItemLogbookClick(Logbook logbook) {
-        Toast.makeText(LogbookActivity.this, "Buka Logbook " + logbook.getTgl(), Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this, "Buka Logbookk ", Toast.LENGTH_SHORT).show();
         Intent logbookdetail = new Intent(LogbookActivity.this, LogbookDetailActivity.class);
         startActivity(logbookdetail);
     }

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LogbookDetailActivity"
-    android:background="#EFEFEF">
+    android:background="#EFEFEF"
+    tools:context=".activity.LogbookDetailActivity">
 
     <ImageButton
-        android:id="@+id/ib_mhsbim_icon_cancel2"
+        android:id="@+id/ib_mhsbim_icon_cancel"
         android:layout_width="57dp"
         android:layout_height="59dp"
         android:layout_marginEnd="32dp"
@@ -26,15 +26,15 @@
         android:id="@+id/tv_mhsbim_jadwal6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:fontFamily="@font/lato_bold_italic"
         android:text="Setujui"
         android:textColor="#1D7943"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ib_mhsbim_icon_cancel2"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="@+id/ib_mhsbim_icon_cancel2"
-        app:layout_constraintTop_toBottomOf="@+id/ib_mhsbim_icon_cancel2"
+        app:layout_constraintEnd_toEndOf="@+id/ib_mhsbim_icon_cancel"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="@+id/ib_mhsbim_icon_cancel"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
@@ -229,6 +229,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/logbook_aktivitas4"
         app:layout_constraintTop_toBottomOf="@+id/logbook_aktivitas4" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

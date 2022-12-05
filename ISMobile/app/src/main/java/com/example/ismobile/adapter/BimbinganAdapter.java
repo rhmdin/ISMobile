@@ -1,6 +1,6 @@
 package com.example.ismobile.adapter;
 import com.example.ismobile.R;
-import com.example.ismobile.model.Bimbingan;
+import com.example.ismobile.model.*;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -64,7 +64,6 @@ public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyVi
 
     public interface  ItemBimbinganClickListener{
         void onItemBimbinganClick(Bimbingan bimbingan);
-
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
