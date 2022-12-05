@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.FormBatalTaActivity">
+    tools:context=".activity.FormBatalTaActivity"
+    android:background="#EFEFEF">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar7"
