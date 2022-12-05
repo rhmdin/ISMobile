@@ -36,6 +36,8 @@
 
     <string name="kategori1">Seminar Hasil</string>
     <string name="kategori2">Sidang TA</string>
+    <integer name="idkategori1">1</integer>
+    <integer name="idkategori2">2</integer>
 
     <string name="waktu1">Senin 01/01/2022</string>
     <string name="waktu2">Selasa 02/01/2022</string>

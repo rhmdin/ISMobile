@@ -31,6 +31,15 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
         Intent bimbingandetail = getIntent();
         String nama = bimbingandetail.getStringExtra("bimbingan_nama");
         detailmhs_nama.setText(nama);
+
+        ImageButton btn_nilai = (ImageButton) findViewById(R.id.ib_mhsbim_icon_nilai);
+        btn_nilai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent feedbacksidang = new Intent(DetailMahasiswaActivity.this, InputNilaiActivity.class);
+                startActivity(feedbacksidang);
+            };
+        });
     }
 
     public void onclick_imgbtn_logbook(View view){

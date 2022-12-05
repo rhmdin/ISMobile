@@ -190,6 +190,10 @@ public class JadwalDosenFragment extends Fragment implements JadwalDosenAdapter.
     public void onItemUndanganClick(JadwalDosen jadwaldosen) {
         Toast.makeText(getContext(), "Kategori: "+jadwaldosen.kategori, Toast.LENGTH_SHORT).show();
         Intent undangandetail = new Intent(getActivity(), DetailUndanganActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("undangan_kategori",jadwaldosen.kategori);
+        extras.putString("undangan_kategori",jadwaldosen.kategori);
+
         undangandetail.putExtra("undangan_kategori", jadwaldosen.kategori);
         startActivity(undangandetail);
     }

@@ -32,13 +32,11 @@ public class DetailUndanganActivity extends AppCompatActivity {
         btn_acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int b =1;
-                String a = kategori;
                 Toast.makeText(DetailUndanganActivity.this, kategori, Toast.LENGTH_SHORT).show();
-                if(a == "Seminar Hasil"){
-                    startActivity(feedbacksemhas);
+                if(kategori == "Seminar Hasil"){
+                    startActivity(feedbacksidang);
                 }
-                else if(a == "Sidang TA"){
+                else if(kategori == getString(R.string.kategori2)){
                     startActivity(feedbacksidang);
                 }
             };
