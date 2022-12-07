@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "953009748700",
+    "project_id": "tbptbbklp5-ismobile",
+    "storage_bucket": "tbptbbklp5-ismobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953009748700:android:ceb6e7567b4c4bf1e69219",
+        "android_client_info": {
+          "package_name": "com.example.ismobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "953009748700-lt57l6jhbgekfoa4k52db0lesmsiolsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4WhHeJmDoncI9nZ4v6XsuOPU94qRxYQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "953009748700-lt57l6jhbgekfoa4k52db0lesmsiolsq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

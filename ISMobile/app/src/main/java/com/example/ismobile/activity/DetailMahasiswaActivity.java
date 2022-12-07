@@ -1,5 +1,6 @@
 package com.example.ismobile.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -20,15 +21,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ismobile.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class DetailMahasiswaActivity extends AppCompatActivity {
 
+    private static String TAG = "DetailMahasiswaActivity Debug";
     private static final String CHANNEL_ID = "notif_logbook";
-    private TextView detailmhs_nama;
-    private TextView tv_nama;
-    private ImageButton logbook, nilai, cancel;
-    private String nama;
     private NotificationManagerCompat notificationManager;
+    private ImageButton logbook, nilai, cancel;
+    private TextView detailmhs_nama, tv_nama;
+    private String nama;
 
 
 
@@ -36,6 +40,23 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_mahasiswa);
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                       Log.d(TAG, token);
+                        Toast.makeText(DetailMahasiswaActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
         //1. ambil notif manager
         notificationManager = NotificationManagerCompat.from(this);
@@ -64,6 +85,7 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mhslogbook = new Intent(DetailMahasiswaActivity.this, LogbookActivity.class);
                 Toast.makeText(DetailMahasiswaActivity.this, "Buka Logbook ", Toast.LENGTH_SHORT).show();
+
                 Intent resultIntent = new Intent(DetailMahasiswaActivity.this, LogbookDetailActivity.class);
                 TaskStackBuilder stackBuilder = TaskStackBuilder.create(DetailMahasiswaActivity.this);
                 stackBuilder.addNextIntentWithParentStack(resultIntent);
