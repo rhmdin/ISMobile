@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/calendar_month/baseline_calendar_month_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialiconsround/notification_add/round_notification_add_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_calendar_month_24" />
+                            <entry key="color" value="c98334" />
+                            <entry key="outputName" value="ic_round_notification_add_24" />
                             <entry key="sourceFile" value="D:\SIUNAND\COURSES\5\PTB_B\ISMobile\ISMobile" />
                           </map>
                         </option>
