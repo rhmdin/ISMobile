@@ -27,7 +27,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class DetailMahasiswaActivity extends AppCompatActivity {
 
-    private static String TAG = "DetailMahasiswaActivity Debug";
+    private static String TAG = "DetailMahasiswaActivity-Debug";
     private static final String CHANNEL_ID = "notif_logbook";
     private NotificationManagerCompat notificationManager;
     private ImageButton logbook, nilai, cancel;
@@ -40,23 +40,6 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_mahasiswa);
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
-                            return;
-                        }
-
-                        // Get new FCM registration token
-                        String token = task.getResult();
-
-                        // Log and toast
-                       Log.d(TAG, token);
-                        Toast.makeText(DetailMahasiswaActivity.this, token, Toast.LENGTH_SHORT).show();
-                    }
-                });
 
         //1. ambil notif manager
         notificationManager = NotificationManagerCompat.from(this);
@@ -109,13 +92,31 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
             };
         });
 
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                       Log.d(TAG, token);
+                        Toast.makeText(DetailMahasiswaActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
     }
 
 
     //2. bikin channel notif / daftarkan channel
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Logbook Notification";
+            CharSequence name = "Logbook Notification Manual";
             String description = "There's new Logbook!";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
