@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "953009748700",
-    "project_id": "tbptbbklp5-ismobile",
-    "storage_bucket": "tbptbbklp5-ismobile.appspot.com"
+    "project_number": "149897384881",
+    "project_id": "ismobile-fc059",
+    "storage_bucket": "ismobile-fc059.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:953009748700:android:ceb6e7567b4c4bf1e69219",
+        "mobilesdk_app_id": "1:149897384881:android:2c1c4c2b850fd52cc36390",
         "android_client_info": {
           "package_name": "com.example.ismobile"
         }
       },
       "oauth_client": [
         {
-          "client_id": "953009748700-lt57l6jhbgekfoa4k52db0lesmsiolsq.apps.googleusercontent.com",
+          "client_id": "149897384881-hqjkqh6qi64qn1vu3g456on7dqsvqql3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD4WhHeJmDoncI9nZ4v6XsuOPU94qRxYQA"
+          "current_key": "AIzaSyDOGX9bDUHcguZvHbSfumhbAPoq7Vtz_U0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "953009748700-lt57l6jhbgekfoa4k52db0lesmsiolsq.apps.googleusercontent.com",
+              "client_id": "149897384881-hqjkqh6qi64qn1vu3g456on7dqsvqql3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
