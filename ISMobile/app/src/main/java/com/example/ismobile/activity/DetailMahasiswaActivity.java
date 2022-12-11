@@ -21,9 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ismobile.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 public class DetailMahasiswaActivity extends AppCompatActivity {
 
@@ -91,27 +88,7 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
 
             };
         });
-
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
-                            return;
-                        }
-
-                        // Get new FCM registration token
-                        String token = task.getResult();
-
-                        // Log and toast
-                       Log.d(TAG, token);
-                        Toast.makeText(DetailMahasiswaActivity.this, token, Toast.LENGTH_SHORT).show();
-                    }
-                });
-
     }
-
 
     //2. bikin channel notif / daftarkan channel
     private void createNotificationChannel() {
