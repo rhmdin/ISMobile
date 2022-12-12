@@ -91,8 +91,6 @@ public class LogbookActivity extends AppCompatActivity implements LogbookAdapter
 
     @Override
     public void onItemLogbookClick(Logbook logbook) {
-
-        Toast.makeText(this, "Buka Logbookk ", Toast.LENGTH_SHORT).show();
         Intent logbookdetail = new Intent(LogbookActivity.this, LogbookDetailActivity.class);
         startActivity(logbookdetail);
     }

@@ -21,6 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ismobile.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class DetailMahasiswaActivity extends AppCompatActivity {
 
@@ -78,16 +81,33 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
                         .setSmallIcon(R.drawable.ic_round_notification_add_24)
                         .setContentTitle("Logbook Notification")
                         .setContentText("New Logbook from student")
-                        //.setContentIntent(resultPendingIntent)
+                        .setContentIntent(resultPendingIntent)
                         .addAction(R.drawable.ic_round_notification_add_24, "Check Logbook", resultPendingIntent)
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
                 //4. bikin objek dan tampilkan notif
                 notificationManager.notify(2012, builder.build());
-                startActivity(mhslogbook);
-
             };
         });
+
+        // Kode token Firebase
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            System.out.println("Fetching FCM registration token failed");
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                        System.out.println(token);
+                        Toast.makeText(DetailMahasiswaActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     //2. bikin channel notif / daftarkan channel
@@ -102,4 +122,6 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
     }
+
+
 }
