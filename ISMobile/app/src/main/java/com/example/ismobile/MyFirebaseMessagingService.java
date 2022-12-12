@@ -15,6 +15,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.example.ismobile.activity.DetailMahasiswaActivity;
+import com.example.ismobile.activity.LogbookDetailActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -40,7 +41,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             NotificationManagerCompat.from(this).createNotificationChannel(channel);
         }
 
-        Intent resultIntent = new Intent(this, DetailMahasiswaActivity.class);
+        Intent resultIntent = new Intent(this, LogbookDetailActivity.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addNextIntentWithParentStack(resultIntent);
         PendingIntent resultPendingIntent =
