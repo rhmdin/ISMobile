@@ -16,7 +16,7 @@ public class APIClient {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("http://api.larntech.net/")
+                .baseUrl("http://api.larntech.net/swagger")
                 .client(okHttpClient)
                 .build();
 
