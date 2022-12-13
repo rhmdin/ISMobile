@@ -47,12 +47,11 @@ public class LoginActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(usn) || TextUtils.isEmpty(pw)){
             Toast.makeText(LoginActivity.this,"Username / Password tidak boleh kosong", Toast.LENGTH_LONG).show();
         }else{
-            //proceed to login
-            login();
-            /*Intent login2main = new Intent(LoginActivity.this, MainActivity.class);
+            //login();
+            Intent login2main = new Intent(LoginActivity.this, MainActivity.class);
             login2main.putExtra("username", usn);
             Toast.makeText(LoginActivity.this, "Berhasil Login" + usn, Toast.LENGTH_SHORT).show();
-            startActivity(login2main);*/
+            startActivity(login2main);
         }
     }
 

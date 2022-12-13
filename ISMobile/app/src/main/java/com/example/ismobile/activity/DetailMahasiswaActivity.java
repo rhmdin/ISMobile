@@ -69,6 +69,8 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
                 Intent mhslogbook = new Intent(DetailMahasiswaActivity.this, LogbookActivity.class);
                 Toast.makeText(DetailMahasiswaActivity.this, "Buka Logbook ", Toast.LENGTH_SHORT).show();
 
+                startActivity(mhslogbook);
+
                 Intent resultIntent = new Intent(DetailMahasiswaActivity.this, LogbookDetailActivity.class);
                 TaskStackBuilder stackBuilder = TaskStackBuilder.create(DetailMahasiswaActivity.this);
                 stackBuilder.addNextIntentWithParentStack(resultIntent);
