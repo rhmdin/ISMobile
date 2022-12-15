@@ -1,4 +1,4 @@
-package com.example.ismobile;
+package com.example.ismobile.api;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.ismobile.R;
 import com.example.ismobile.activity.DetailMahasiswaActivity;
 import com.example.ismobile.activity.LogbookDetailActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;

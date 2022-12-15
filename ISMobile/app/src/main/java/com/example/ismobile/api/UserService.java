@@ -1,8 +1,9 @@
-package com.example.ismobile;
+package com.example.ismobile.api;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import com.example.ismobile.model.*;
 
 public interface UserService {
 

@@ -1,4 +1,4 @@
-package com.example.ismobile;
+package com.example.ismobile.api;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

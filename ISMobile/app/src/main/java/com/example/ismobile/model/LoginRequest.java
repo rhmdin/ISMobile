@@ -1,4 +1,4 @@
-package com.example.ismobile;
+package com.example.ismobile.model;
 
 public class LoginRequest {
 

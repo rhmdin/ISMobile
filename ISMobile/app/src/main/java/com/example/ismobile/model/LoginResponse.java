@@ -1,9 +1,13 @@
-package com.example.ismobile;
-
+package com.example.ismobile.model;
+import com.google.gson.annotations.SerializedName;
 public class LoginResponse {
     private int user_id;
     private String email;
     private String username;
+
+    @SerializedName("authorisation")
+    private Authorisation authorisation;
+
 
     public int getUser_id() {
         return user_id;
