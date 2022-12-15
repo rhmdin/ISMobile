@@ -9,9 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ismobile.api.APIClient;
-import com.example.ismobile.model.LoginRequest;
-import com.example.ismobile.model.LoginResponse;
+import com.example.ismobile.api.*;
+import com.example.ismobile.model.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -72,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtra("data",loginResponse.getUsername()));
+                            startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtra("data", LoginUser.getUsername()));
                         }
                     },700);
 

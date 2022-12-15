@@ -1,35 +1,27 @@
 package com.example.ismobile.model;
 import com.google.gson.annotations.SerializedName;
 public class LoginResponse {
-    private int user_id;
-    private String email;
-    private String username;
 
     @SerializedName("authorisation")
-    private Authorisation authorisation;
+    private LoginAuthorisation authorisation;
 
+    @SerializedName("user")
+    private LoginUser user;
 
-    public int getUser_id() {
-        return user_id;
+    public LoginAuthorisation getAuthorisation() {
+        return authorisation;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setAuthorisation(LoginAuthorisation authorisation) {
+        this.authorisation = authorisation;
     }
 
-    public String getEmail() {
-        return email;
+    public LoginUser getUser() {
+        return user;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUser(LoginUser user) {
+        this.user = user;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 }
