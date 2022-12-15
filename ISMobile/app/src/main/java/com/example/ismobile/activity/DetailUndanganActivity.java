@@ -12,6 +12,7 @@ import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,10 +31,12 @@ import com.google.firebase.messaging.FirebaseMessaging;
 public class DetailUndanganActivity extends AppCompatActivity {
 
     private TextView detail_kategori, detail_judul_kategori, detail_nama, detail_nim;
-
+    private Button acc,cancel;
     private static String TAG = "DetailMahasiswaActivity-Debug";
     private static final String CHANNEL_ID = "notif_logbook";
+    private String kategori;
     private NotificationManagerCompat notificationManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,38 +44,22 @@ public class DetailUndanganActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_undangan);
         detail_kategori = findViewById(R.id.detailjadwal_kategori);
         detail_judul_kategori = findViewById(R.id.detailjadwal_judulkategori);
+        acc = (Button) findViewById(R.id.detailjadwal_btn_acc);
+        cancel = (Button) findViewById(R.id.detailjadwal_btn_reject);
 
         Intent undangandetail = getIntent();
-        String kategori = undangandetail.getStringExtra("undangan_kategori");
-        detail_kategori.setText(kategori);
-        detail_judul_kategori.setText("Detail "+kategori);
+        final String[] kategori = {undangandetail.getStringExtra("undangan_kategori")};
+        detail_kategori.setText(kategori[0]);
+        detail_judul_kategori.setText("Detail "+ kategori[0]);
 
-        Button btn_acc = (Button) findViewById(R.id.detailjadwal_btn_acc);
         Intent feedbacksemhas = new Intent(DetailUndanganActivity.this, DetailUndanganSeminarActivity.class);
         Intent feedbacksidang = new Intent(DetailUndanganActivity.this, DetailUndanganSidangActivity.class);
-        btn_acc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(DetailUndanganActivity.this, kategori, Toast.LENGTH_SHORT).show();
-                if(kategori == "Seminar Hasil"){
-                    startActivity(feedbacksidang);
-                }
-                else if(kategori == getString(R.string.kategori2)){
-                    startActivity(feedbacksidang);
-                }
-            };
-
-    });
-
 
         //1. ambil notif manager
         notificationManager = NotificationManagerCompat.from(this);
         createNotificationChannel();
 
-        Button acc = (Button) findViewById(R.id.detailjadwal_btn_acc);
-        Button cancel = (Button) findViewById(R.id.detailjadwal_btn_reject);
-
-
+        //cancel undangan
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,11 +67,21 @@ public class DetailUndanganActivity extends AppCompatActivity {
                 startActivity(feedbacksidang);
             };
         });
+
+        //acc undangan
         acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent mhslogbook = new Intent(DetailUndanganActivity.this, DetailUndanganSidangActivity.class);
-                Toast.makeText(DetailUndanganActivity.this, "Buka Detail ", Toast.LENGTH_SHORT).show();
+                kategori[0] = detail_kategori.getText().toString();
+                if(TextUtils.equals(kategori[0], "Seminar Hasil")){
+                    startActivity(feedbacksemhas);
+                }
+                else if(TextUtils.equals(kategori[0], getString(R.string.kategori2))){
+                    startActivity(feedbacksidang);
+                }
+
+                //Intent detailsidang = new Intent(DetailUndanganActivity.this, DetailUndanganSidangActivity.class);
+                Toast.makeText(DetailUndanganActivity.this, "Buka Detail Sidang", Toast.LENGTH_SHORT).show();
 
                 Intent resultIntent = new Intent(DetailUndanganActivity.this, DetailUndanganSidangActivity.class);
                 TaskStackBuilder stackBuilder = TaskStackBuilder.create(DetailUndanganActivity.this);
