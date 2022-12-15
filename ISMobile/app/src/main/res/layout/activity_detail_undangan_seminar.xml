@@ -120,6 +120,21 @@
         app:layout_constraintEnd_toEndOf="@+id/textView31"
         app:layout_constraintTop_toTopOf="@+id/textView49" />
 
+    <Button
+        android:id="@+id/semhas_btn_feedback"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_input_nilai"
+        android:fontFamily="@font/poppins_extrabold"
+        android:text="Catatan dan Rekomendasi"
+        android:textColor="@color/orange_500"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFileTugasAkhir" />
+
     <View
         android:id="@+id/divider10"
         android:layout_width="300dp"
@@ -194,21 +209,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView53"
         app:layout_constraintTop_toBottomOf="@+id/textView53" />
-
-    <Button
-        android:id="@+id/buttonTerimaJadwalSemhas"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:drawableLeft="@drawable/ic_input_nilai"
-        android:fontFamily="@font/poppins_extrabold"
-        android:text="Catatan dan Rekomendasi"
-        android:textColor="@color/orange_500"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/buttonFileTugasAkhir" />
 
     <View
         android:id="@+id/divider8"

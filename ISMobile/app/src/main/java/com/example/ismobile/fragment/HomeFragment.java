@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
     private int[] bimbingan_avaID;
     private RecyclerView rv_bimbingan;
     private TextView tv_usn;
-    private String usn;
+    private String usn,status;
     public HomeFragment() {
         // Required empty public constructor
     }

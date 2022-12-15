@@ -21,7 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ismobile.R;
-import com.example.ismobile.fragment.JadwalDosenFragment;
+import com.example.ismobile.fragment.*;
+import com.example.ismobile.model.LoginUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -59,12 +60,17 @@ public class DetailUndanganActivity extends AppCompatActivity {
         notificationManager = NotificationManagerCompat.from(this);
         createNotificationChannel();
 
+        JadwalDosenFragment jadwaldosenFragment = new JadwalDosenFragment();
+
         //cancel undangan
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent feedbacksidang = new Intent(DetailUndanganActivity.this, JadwalDosenFragment.class);
-                startActivity(feedbacksidang);
+                Bundle bundleinv = new Bundle();
+                bundleinv.putString("statusinv","inv");
+                jadwaldosenFragment.setArguments(bundleinv);
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new JadwalDosenFragment()).commit();
             };
         });
 

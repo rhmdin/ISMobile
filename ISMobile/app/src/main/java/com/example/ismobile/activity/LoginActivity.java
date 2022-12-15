@@ -64,14 +64,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
                 if(response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this,"Login Successful", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this,"Login Successful", Toast.LENGTH_SHORT).show();
                     LoginResponse loginResponse = response.body();
 
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-                            startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtra("data", LoginUser.getUsername()));
+                            Bundle extras = new Bundle();
+                            extras.putString("username", LoginUser.getUsername());
+                            extras.putString("status","login");
+                            startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtras(extras));
                         }
                     },700);
 

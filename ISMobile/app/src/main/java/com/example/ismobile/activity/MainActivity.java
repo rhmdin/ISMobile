@@ -2,12 +2,14 @@ package com.example.ismobile.activity;
 import com.example.ismobile.R;
 import com.example.ismobile.fragment.*;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ProfileFragment profileFragment = new ProfileFragment();
 
     public TextView tv_usn;
+    private String status, usn, statusinv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +32,24 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        String usn = getIntent().getStringExtra("username");
         Log.d("nama", "onCreate: " +usn);
-        Bundle bundle = new Bundle();
-        bundle.putString("username", usn);
-        homeFragment.setArguments(bundle);
-        profileFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, homeFragment).commit();
+
+
+        Bundle extrasmain = getIntent().getExtras();
+        status = extrasmain.getString("status");
+        statusinv = extrasmain.getString("status");
+        usn = extrasmain.getString("username");
+
+        if(status.equals("login") || statusinv.isEmpty()){
+            Bundle bundlehome = new Bundle();
+            bundlehome.putString("username", usn);
+            homeFragment.setArguments(bundlehome);
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, homeFragment).commit();
+        }
+        else if( statusinv.isEmpty()==false){
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, jadwaldosenFragment).commit();
+        }
+
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
