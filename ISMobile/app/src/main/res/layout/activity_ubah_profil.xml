@@ -72,10 +72,10 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/lato_bold_italic"
         android:text="Nomor Hp"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintStart_toStartOf="@+id/profile_edit_email"
+        app:layout_constraintTop_toBottomOf="@+id/profile_edit_email" />
 
     <ImageView
         android:id="@+id/fotoProfilView"
@@ -94,23 +94,27 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/lato_bold_italic"
         android:text="Email"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextNIP"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNIP" />
+        app:layout_constraintStart_toStartOf="@+id/profil_edit_nip"
+        app:layout_constraintTop_toBottomOf="@+id/profil_edit_nip" />
 
     <EditText
-        android:id="@+id/editTextNIP"
+        android:id="@+id/profil_edit_nip"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:background="@drawable/form2"
-        android:clickable="false"
         android:contextClickable="false"
+        android:editable="true"
         android:ems="10"
+
         android:fontFamily="@font/lato_regular"
         android:inputType="number"
         android:minHeight="48dp"
+        android:paddingStart="15dp"
         android:text="198201182008121002"
+
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -162,19 +166,20 @@
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:background="@drawable/form2"
-        android:clickable="false"
         android:contextClickable="false"
         android:ems="10"
         android:fontFamily="@font/lato_regular"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:paddingStart="15dp"
         android:text="Husnil Kamil, M.T."
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/profile_edit_email"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:background="@drawable/form"
@@ -182,6 +187,7 @@
         android:fontFamily="@font/lato_regular"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:paddingStart="15dp"
         android:text="namadosen@gmail.com"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView21"
@@ -195,6 +201,7 @@
         android:fontFamily="@font/lato_regular"
         android:inputType="phone"
         android:minHeight="48dp"
+        android:paddingStart="15dp"
         android:text="081234567890"
         app:layout_constraintStart_toStartOf="@+id/textView22"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />

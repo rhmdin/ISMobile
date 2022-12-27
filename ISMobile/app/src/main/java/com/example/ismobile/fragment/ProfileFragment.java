@@ -18,9 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.ismobile.activity.LoginActivity;
 import com.example.ismobile.R;
-import com.example.ismobile.activity.MainActivity;
-import com.example.ismobile.activity.UbahPasswordActivity;
-import com.example.ismobile.activity.UbahProfilActivity;
+import com.example.ismobile.activity.*;
 import com.example.ismobile.api.APIClient;
 import com.example.ismobile.databinding.FragmentProfileBinding;
 import com.example.ismobile.modelapi.*;
@@ -44,7 +42,7 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private TextView tv_usn;
+    private TextView tv_nama, tv_nip;
     private String usn,gettoken,token;
 
     public ProfileFragment() {
@@ -84,17 +82,28 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview = LayoutInflater.from(getContext()).inflate(R.layout.fragment_profile, container, false);
-        tv_usn = rootview.findViewById(R.id.profile_nama);
-        Bundle bundle = getArguments();
+        tv_nama = rootview.findViewById(R.id.profile_nama);
+        tv_nip = rootview.findViewById(R.id.profile_nip);
 
-        if (bundle!=null){
-            usn = bundle.getString("username");
-            Log.d("status", "Alhamdulillah: "+ usn);
-            tv_usn.setText(usn);
-        }
-        else {
-            Log.d("status", "semangatt dina");
-        }
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("userkey", Context.MODE_PRIVATE);
+        gettoken = sharedPreferences.getString("token", "");
+        token = "Bearer " + gettoken;
+
+        Call<ProfileResponse> profileResponseCall = APIClient.getUserService().userProfile(token);
+        profileResponseCall.enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                ProfileResponse profileResponse = response.body();
+                tv_nama.setText(profileResponse.getName());
+                tv_nip.setText(profileResponse.getUsername());
+            }
+
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+
+            }
+        });
+
 
         // Inflate the layout for this fragment
         TextView edit_profile = rootview.findViewById(R.id.profile_edit);
