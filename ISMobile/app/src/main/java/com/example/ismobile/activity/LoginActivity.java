@@ -1,20 +1,24 @@
 package com.example.ismobile.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ismobile.api.*;
-import com.example.ismobile.model.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ismobile.R;
+import com.example.ismobile.modelapi.LoginRequest;
+import com.example.ismobile.modelapi.LoginResponse;
+import com.example.ismobile.modelapi.LoginUser;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -64,19 +68,30 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
                 if(response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this,"Login Successful", Toast.LENGTH_SHORT).show();
                     LoginResponse loginResponse = response.body();
-
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Bundle extras = new Bundle();
-                            extras.putString("username", LoginUser.getUsername());
-                            extras.putString("status","login");
-                            startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtras(extras));
-                        }
-                    },700);
-
+                    if (loginResponse.getStatus() != ""){
+                        String token = loginResponse.getAuthorisation().getToken();
+                        String name = loginResponse.getUser().getName();
+                        String username = loginResponse.getUser().getUsername();
+                        String eml = loginResponse.getUser().getEmail();
+                        Log.i("success", token);
+                        SharedPreferences sharedPreferences = getSharedPreferences("userkey", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("token", token);
+                        editor.putString("name", name);
+                        editor.putString("email", eml);
+                        editor.putString("username", username);
+                        Log.d("email", eml);
+                        editor.apply();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Bundle extras = new Bundle();
+                                Toast.makeText(LoginActivity.this,"Login Successful", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtras(extras));
+                            }
+                        },700);
+                    }
                 }else{
                     Toast.makeText(LoginActivity.this,"Login Failed", Toast.LENGTH_LONG).show();
 

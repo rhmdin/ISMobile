@@ -2,11 +2,14 @@ package com.example.ismobile.fragment;
 import com.example.ismobile.activity.LoginActivity;
 import com.example.ismobile.R;
 import com.example.ismobile.adapter.*;
+import com.example.ismobile.api.APIClient;
 import com.example.ismobile.model.*;
+import com.example.ismobile.modelapi.*;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
@@ -36,8 +45,8 @@ public class HomeFragment extends Fragment {
     private String[] bimbingan_nama, bimbingan_nim;
     private int[] bimbingan_avaID;
     private RecyclerView rv_bimbingan;
-    private TextView tv_usn;
-    private String usn,status;
+    private TextView tv_nip, tv_nama;
+    private String usn,status,gettoken,token;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -72,17 +81,27 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview = LayoutInflater.from(getContext()).inflate(R.layout.fragment_home, container, false);
-        tv_usn = rootview.findViewById(R.id.home_usn);
-        Bundle bundle = getArguments();
+        tv_nama = rootview.findViewById(R.id.home_nama);
+        tv_nip = rootview.findViewById(R.id.home_nip);
 
-        if (bundle!=null){
-            usn = bundle.getString("username");
-            Log.d("status", "Alhamdulillah: "+ usn);
-            tv_usn.setText(usn);
-        }
-        else {
-            Log.d("status", "semangatt dina");
-        }
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("userkey", Context.MODE_PRIVATE);
+        gettoken = sharedPreferences.getString("token", "");
+        token = "Bearer " + gettoken;
+
+        Call<ProfileResponse> profileResponseCall = APIClient.getUserService().userProfile(token);
+        profileResponseCall.enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                ProfileResponse profileResponse = response.body();
+                tv_nama.setText(profileResponse.getName());
+                tv_nip.setText(profileResponse.getUsername());
+            }
+
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+
+            }
+        });
 
         ImageButton logout = rootview.findViewById(R.id.btn_logout);
         logout.setOnClickListener(new View.OnClickListener() {

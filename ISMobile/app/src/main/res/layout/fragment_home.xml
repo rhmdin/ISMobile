@@ -100,7 +100,7 @@
                 android:layout_height="81dp"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/photo_profile"
-                app:layout_constraintBottom_toBottomOf="@+id/bimbingan_ket2"
+                app:layout_constraintBottom_toBottomOf="@+id/home_nip"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/msg_welcome"
                 app:layout_constraintVertical_bias="0.545" />
@@ -119,7 +119,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/home_usn"
+                android:id="@+id/home_nama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
@@ -130,7 +130,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/msg_welcome" />
 
             <TextView
-                android:id="@+id/bimbingan_ket2"
+                android:id="@+id/home_nip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_italic"
@@ -138,7 +138,7 @@
                 android:textColor="#9F9E9E"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/msg_welcome"
-                app:layout_constraintTop_toBottomOf="@+id/home_usn" />
+                app:layout_constraintTop_toBottomOf="@+id/home_nama" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

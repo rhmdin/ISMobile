@@ -1,7 +1,10 @@
 package com.example.ismobile.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +12,22 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.ismobile.activity.LoginActivity;
 import com.example.ismobile.R;
+import com.example.ismobile.activity.MainActivity;
 import com.example.ismobile.activity.UbahPasswordActivity;
 import com.example.ismobile.activity.UbahProfilActivity;
+import com.example.ismobile.api.APIClient;
 import com.example.ismobile.databinding.FragmentProfileBinding;
+import com.example.ismobile.modelapi.*;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +45,7 @@ public class ProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private TextView tv_usn;
-    private String usn;
+    private String usn,gettoken,token;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -130,6 +141,7 @@ public class ProfileFragment extends Fragment {
         logout_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                logout();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
@@ -140,6 +152,36 @@ public class ProfileFragment extends Fragment {
     ProfileListener pListener;
 
     public interface ProfileListener{
+
+    }
+
+    public void logout(){
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("userkey",  Context.MODE_PRIVATE);
+        gettoken = sharedPreferences.getString("token", "");
+        token = "Bearer " + gettoken;
+
+        Call<LogoutResponse> logoutResponseCall = APIClient.getUserService().userLogout(token);
+        logoutResponseCall.enqueue(new Callback<LogoutResponse>() {
+            @Override
+            public void onResponse(Call<LogoutResponse> call, Response<LogoutResponse> response) {
+
+                if (response.code() == 200){
+                    if (response.isSuccessful()){
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        sharedPreferences.edit().clear().apply();
+                        startActivity(intent);
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<LogoutResponse> call, Throwable t) {
+                Toast.makeText(getActivity(),"Throwable "+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
 
     }
 }
