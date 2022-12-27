@@ -2,6 +2,7 @@ package com.example.ismobile.api;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -27,12 +28,17 @@ public interface UserService {
 
     @POST("api/me/update")
     Call<ProfileResponse> userEditProfile(
-            @Header("Authorization") String token
+            @Header("Authorization") String token,
+            @Field("email") String email,
+            @Field("name") String name
     );
 
     @POST("api/password")
     Call<ProfileResponse> userEditPassword(
-            @Header("Authorization") String token
+            @Header("Authorization") String token,
+            @Field("old_password") String oldPass,
+            @Field("new_password") String newPass,
+            @Field("confirm_password") String confPass
     );
 
 }

@@ -86,6 +86,7 @@ public class HomeFragment extends Fragment {
         gettoken = sharedPreferences.getString("token", "");
         token = "Bearer " + gettoken;
 
+
         Call<ProfileResponse> profileResponseCall = APIClient.getUserService().userProfile(token);
         profileResponseCall.enqueue(new Callback<ProfileResponse>() {
             @Override
@@ -100,7 +101,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
         ImageButton logout = rootview.findViewById(R.id.btn_logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
