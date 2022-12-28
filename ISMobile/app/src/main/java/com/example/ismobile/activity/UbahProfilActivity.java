@@ -21,18 +21,18 @@ import retrofit2.Response;
 
 public class UbahProfilActivity extends AppCompatActivity{
 
-    private EditText tv_nama, tv_nip, tv_email, tv_nohp;
+    private EditText edit_nama, edit_nip, edit_email, edit_nohp;
     private String gettoken, token, name, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ubah_profil);
-        tv_nama = (EditText) findViewById(R.id.profil_edit_nama);
-        tv_email = (EditText) findViewById(R.id.profile_edit_email);
-        tv_nip = (EditText) findViewById(R.id.profil_edit_nip);
-        KeyListener mKeyListener = tv_nip.getKeyListener();
-        tv_nip.setKeyListener(null);
+        edit_nama = (EditText) findViewById(R.id.profil_edit_nama);
+        edit_email = (EditText) findViewById(R.id.profile_edit_email);
+        edit_nip = (EditText) findViewById(R.id.profil_edit_nip);
+        KeyListener mKeyListener = edit_nip.getKeyListener();
+        edit_nip.setKeyListener(null);
         getSupportFragmentManager().beginTransaction().add(R.id.profileFragment, new ProfileFragment());
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("userkey", Context.MODE_PRIVATE);
@@ -45,9 +45,9 @@ public class UbahProfilActivity extends AppCompatActivity{
             @Override
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
                 ProfileResponse profileResponse = response.body();
-                tv_nama.setText(profileResponse.getName());
-                tv_nip.setText(profileResponse.getUsername());
-                tv_email.setText(profileResponse.getEmail());
+                edit_nama.setText(profileResponse.getName());
+                edit_nip.setText(profileResponse.getUsername());
+                edit_email.setText(profileResponse.getEmail());
             }
 
             @Override
