@@ -101,7 +101,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
         // Inflate the layout for this fragment
         TextView edit_profile = rootview.findViewById(R.id.profile_edit);
         edit_profile.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +138,7 @@ public class ProfileFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                logout();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
@@ -166,28 +166,24 @@ public class ProfileFragment extends Fragment {
         gettoken = sharedPreferences.getString("token", "");
         token = "Bearer " + gettoken;
 
-        Call<Logout> logoutResponseCall = APIClient.getUserService().userLogout(token);
-        logoutResponseCall.enqueue(new Callback<Logout>() {
+        Call<Logout> call = APIClient.getUserService().userLogout(token);
+        call.enqueue(new Callback<Logout>() {
             @Override
             public void onResponse(Call<Logout> call, Response<Logout> response) {
-
-                if (response.code() == 200){
-                    if (response.isSuccessful()){
-                        Intent intent = new Intent(getActivity(), LoginActivity.class);
-                        startActivity(intent);
+                if(response.code()==200){
+                    if(response.isSuccessful()){
+                        Intent logout = new Intent(getActivity(), LoginActivity.class);
                         Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         sharedPreferences.edit().clear().apply();
-                        startActivity(intent);
+                        startActivity(logout);
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<Logout> call, Throwable t) {
-                Toast.makeText(getActivity(),"Throwable "+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 }
