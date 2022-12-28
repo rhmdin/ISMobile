@@ -2,7 +2,7 @@ package com.example.ismobile.modelapi;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LogoutResponse {
+public class Logout {
     public String getMessage() {
         return message;
     }

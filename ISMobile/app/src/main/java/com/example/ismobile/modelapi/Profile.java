@@ -2,7 +2,7 @@ package com.example.ismobile.modelapi;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProfileResponse {
+public class Profile {
 
     @SerializedName("id")
     private int id;

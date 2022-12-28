@@ -4,12 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -89,21 +86,20 @@ public class ProfileFragment extends Fragment {
         gettoken = sharedPreferences.getString("token", "");
         token = "Bearer " + gettoken;
 
-        Call<ProfileResponse> profileResponseCall = APIClient.getUserService().userProfile(token);
-        profileResponseCall.enqueue(new Callback<ProfileResponse>() {
+        Call<Profile> profileResponseCall = APIClient.getUserService().userProfile(token);
+        profileResponseCall.enqueue(new Callback<Profile>() {
             @Override
-            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
-                ProfileResponse profileResponse = response.body();
+            public void onResponse(Call<Profile> call, Response<Profile> response) {
+                Profile profileResponse = response.body();
                 tv_nama.setText(profileResponse.getName());
                 tv_nip.setText(profileResponse.getUsername());
             }
 
             @Override
-            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+            public void onFailure(Call<Profile> call, Throwable t) {
 
             }
         });
-
 
         // Inflate the layout for this fragment
         TextView edit_profile = rootview.findViewById(R.id.profile_edit);
@@ -142,6 +138,7 @@ public class ProfileFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                logout();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
@@ -169,28 +166,24 @@ public class ProfileFragment extends Fragment {
         gettoken = sharedPreferences.getString("token", "");
         token = "Bearer " + gettoken;
 
-        Call<LogoutResponse> logoutResponseCall = APIClient.getUserService().userLogout(token);
-        logoutResponseCall.enqueue(new Callback<LogoutResponse>() {
+        Call<Logout> call = APIClient.getUserService().userLogout(token);
+        call.enqueue(new Callback<Logout>() {
             @Override
-            public void onResponse(Call<LogoutResponse> call, Response<LogoutResponse> response) {
-
-                if (response.code() == 200){
-                    if (response.isSuccessful()){
-                        Intent intent = new Intent(getActivity(), LoginActivity.class);
-                        startActivity(intent);
+            public void onResponse(Call<Logout> call, Response<Logout> response) {
+                if(response.code()==200){
+                    if(response.isSuccessful()){
+                        Intent logout = new Intent(getActivity(), LoginActivity.class);
                         Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         sharedPreferences.edit().clear().apply();
-                        startActivity(intent);
+                        startActivity(logout);
                     }
                 }
             }
-            @Override
-            public void onFailure(Call<LogoutResponse> call, Throwable t) {
-                Toast.makeText(getActivity(),"Throwable "+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
 
+            @Override
+            public void onFailure(Call<Logout> call, Throwable t) {
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 }
