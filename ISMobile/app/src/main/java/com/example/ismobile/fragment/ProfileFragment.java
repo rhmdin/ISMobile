@@ -4,12 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -89,17 +86,17 @@ public class ProfileFragment extends Fragment {
         gettoken = sharedPreferences.getString("token", "");
         token = "Bearer " + gettoken;
 
-        Call<ProfileResponse> profileResponseCall = APIClient.getUserService().userProfile(token);
-        profileResponseCall.enqueue(new Callback<ProfileResponse>() {
+        Call<Profile> profileResponseCall = APIClient.getUserService().userProfile(token);
+        profileResponseCall.enqueue(new Callback<Profile>() {
             @Override
-            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
-                ProfileResponse profileResponse = response.body();
+            public void onResponse(Call<Profile> call, Response<Profile> response) {
+                Profile profileResponse = response.body();
                 tv_nama.setText(profileResponse.getName());
                 tv_nip.setText(profileResponse.getUsername());
             }
 
             @Override
-            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+            public void onFailure(Call<Profile> call, Throwable t) {
 
             }
         });
@@ -169,10 +166,10 @@ public class ProfileFragment extends Fragment {
         gettoken = sharedPreferences.getString("token", "");
         token = "Bearer " + gettoken;
 
-        Call<LogoutResponse> logoutResponseCall = APIClient.getUserService().userLogout(token);
-        logoutResponseCall.enqueue(new Callback<LogoutResponse>() {
+        Call<Logout> logoutResponseCall = APIClient.getUserService().userLogout(token);
+        logoutResponseCall.enqueue(new Callback<Logout>() {
             @Override
-            public void onResponse(Call<LogoutResponse> call, Response<LogoutResponse> response) {
+            public void onResponse(Call<Logout> call, Response<Logout> response) {
 
                 if (response.code() == 200){
                     if (response.isSuccessful()){
@@ -185,7 +182,7 @@ public class ProfileFragment extends Fragment {
                 }
             }
             @Override
-            public void onFailure(Call<LogoutResponse> call, Throwable t) {
+            public void onFailure(Call<Logout> call, Throwable t) {
                 Toast.makeText(getActivity(),"Throwable "+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
 
             }

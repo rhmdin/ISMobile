@@ -87,17 +87,17 @@ public class HomeFragment extends Fragment {
         token = "Bearer " + gettoken;
 
 
-        Call<ProfileResponse> profileResponseCall = APIClient.getUserService().userProfile(token);
-        profileResponseCall.enqueue(new Callback<ProfileResponse>() {
+        Call<Profile> profileResponseCall = APIClient.getUserService().userProfile(token);
+        profileResponseCall.enqueue(new Callback<Profile>() {
             @Override
-            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
-                ProfileResponse profileResponse = response.body();
+            public void onResponse(Call<Profile> call, Response<Profile> response) {
+                Profile profileResponse = response.body();
                 tv_nama.setText(profileResponse.getName());
                 tv_nip.setText(profileResponse.getUsername());
             }
 
             @Override
-            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+            public void onFailure(Call<Profile> call, Throwable t) {
 
             }
         });

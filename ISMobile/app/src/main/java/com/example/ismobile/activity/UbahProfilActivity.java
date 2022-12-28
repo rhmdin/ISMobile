@@ -6,14 +6,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.KeyListener;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.ismobile.R;
 import com.example.ismobile.api.APIClient;
 import com.example.ismobile.fragment.ProfileFragment;
-import com.example.ismobile.modelapi.ProfileResponse;
+import com.example.ismobile.modelapi.Profile;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,22 +38,25 @@ public class UbahProfilActivity extends AppCompatActivity{
         token = "Bearer " + gettoken;
 
 
-        Call<ProfileResponse> profileResponseCall = APIClient.getUserService().userProfile(token);
-        profileResponseCall.enqueue(new Callback<ProfileResponse>() {
+        Call<Profile> profileResponseCall = APIClient.getUserService().userProfile(token);
+        profileResponseCall.enqueue(new Callback<Profile>() {
             @Override
-            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
-                ProfileResponse profileResponse = response.body();
+            public void onResponse(Call<Profile> call, Response<Profile> response) {
+                Profile profileResponse = response.body();
                 edit_nama.setText(profileResponse.getName());
                 edit_nip.setText(profileResponse.getUsername());
                 edit_email.setText(profileResponse.getEmail());
             }
 
             @Override
-            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+            public void onFailure(Call<Profile> call, Throwable t) {
 
             }
         });
     }
 
 
+    public void updateprofil(){
+
+    }
 }

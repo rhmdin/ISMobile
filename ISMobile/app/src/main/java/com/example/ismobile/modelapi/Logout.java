@@ -2,18 +2,7 @@ package com.example.ismobile.modelapi;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProfileUpdate {
-    @SerializedName("status")
-    private String status;
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
+public class Logout {
     public String getMessage() {
         return message;
     }
