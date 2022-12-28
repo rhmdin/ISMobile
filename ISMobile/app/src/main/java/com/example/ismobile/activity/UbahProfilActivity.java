@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.KeyListener;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.ismobile.R;
@@ -20,16 +21,16 @@ import retrofit2.Response;
 
 public class UbahProfilActivity extends AppCompatActivity{
 
-    private TextView tv_nama, tv_nip, tv_email, tv_nohp;
+    private EditText tv_nama, tv_nip, tv_email, tv_nohp;
     private String gettoken, token, name, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ubah_profil);
-        tv_nama = (TextView) findViewById(R.id.profil_edit_nama);
-        tv_email = (TextView) findViewById(R.id.profile_edit_email);
-        tv_nip = (TextView) findViewById(R.id.profil_edit_nip);
+        tv_nama = (EditText) findViewById(R.id.profil_edit_nama);
+        tv_email = (EditText) findViewById(R.id.profile_edit_email);
+        tv_nip = (EditText) findViewById(R.id.profil_edit_nip);
         KeyListener mKeyListener = tv_nip.getKeyListener();
         tv_nip.setKeyListener(null);
         getSupportFragmentManager().beginTransaction().add(R.id.profileFragment, new ProfileFragment());
