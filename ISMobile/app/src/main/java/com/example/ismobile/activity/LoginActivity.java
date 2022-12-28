@@ -2,12 +2,14 @@ package com.example.ismobile.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +29,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextView tv_edit_usn, tv_edit_pw;
+    EditText edit_usn, edit_pw;
     Button btn_login;
     String usn,pw;
 
@@ -38,22 +40,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClick_Button_Login(View view){
-        tv_edit_usn = findViewById(R.id.login_edit_username);
-        tv_edit_pw = findViewById(R.id.login_edit_password);
-        usn = tv_edit_usn.getText().toString();
-        pw = tv_edit_pw.getText().toString();
+        edit_usn = findViewById(R.id.login_edit_username);
+        edit_pw = findViewById(R.id.login_edit_password);
+        usn = edit_usn.getText().toString();
+        pw = edit_pw.getText().toString();
 
         //Log.d("salah", "login: " +usn);
 
-        if(TextUtils.isEmpty(usn) || TextUtils.isEmpty(pw)){
-            Toast.makeText(LoginActivity.this,"Username / Password tidak boleh kosong", Toast.LENGTH_LONG).show();
-        }else{
             login();
-            /*Intent login2main = new Intent(LoginActivity.this, MainActivity.class);
-            login2main.putExtra("username", usn);
-            Toast.makeText(LoginActivity.this, "Berhasil Login " + usn, Toast.LENGTH_SHORT).show();
-            startActivity(login2main);*/
-        }
     }
 
 
@@ -62,50 +56,78 @@ public class LoginActivity extends AppCompatActivity {
         loginRequest.setUsername(usn);
         loginRequest.setPassword(pw);
 
-        Call<LoginResponse> loginResponseCall = APIClient.getUserService().userLogin(loginRequest);
-        loginResponseCall.enqueue(new Callback<LoginResponse>() {
-            @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-
-                if(response.isSuccessful()){
-                    LoginResponse loginResponse = response.body();
-                    if (loginResponse.getStatus() != ""){
-                        String token = loginResponse.getAuthorisation().getToken();
-                        String name = loginResponse.getUser().getName();
-                        String username = loginResponse.getUser().getUsername();
-                        String eml = loginResponse.getUser().getEmail();
-                        Log.i("success", token);
-                        SharedPreferences sharedPreferences = getSharedPreferences("userkey", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("token", token);
-                        editor.putString("name", name);
-                        editor.putString("email", eml);
-                        editor.putString("username", username);
-                        Log.d("email", eml);
-                        editor.apply();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Bundle extras = new Bundle();
-                                Toast.makeText(LoginActivity.this,"Login Successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtras(extras));
-                            }
-                        },700);
+        if(validation(usn, pw).equals(1)) {
+            Call<LoginResponse> loginResponseCall = APIClient.getUserService().userLogin(loginRequest);
+            loginResponseCall.enqueue(new Callback<LoginResponse>() {
+                @Override
+                public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                    String message;
+                    if(response.isSuccessful()){
+                        LoginResponse loginResponse = response.body();
+                        if (loginResponse.getStatus() != ""){
+                            String token = loginResponse.getAuthorisation().getToken();
+                            String name = loginResponse.getUser().getName();
+                            String username = loginResponse.getUser().getUsername();
+                            String eml = loginResponse.getUser().getEmail();
+                            Log.i("success", token);
+                            SharedPreferences sharedPreferences = getSharedPreferences("userkey", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("token", token);
+                            editor.putString("name", name);
+                            editor.putString("email", eml);
+                            editor.putString("username", username);
+                            Log.d("email", eml);
+                            editor.apply();
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent login2main = new Intent(LoginActivity.this,MainActivity.class).putExtra("logx"," true");
+                                    Toast.makeText(LoginActivity.this,"Login Successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(login2main);
+                                }
+                            },700);
+                        }
+                        else{
+                            message = loginResponse.getStatus();
+                            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(LoginActivity.this,"Login Failed", Toast.LENGTH_LONG).show();
                     }
-                }else{
-                    Toast.makeText(LoginActivity.this,"Login Failed", Toast.LENGTH_LONG).show();
 
                 }
 
-            }
+                @Override
+                public void onFailure(Call<LoginResponse> call, Throwable t) {
+                    Toast.makeText(LoginActivity.this,"Throwable "+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
 
-            @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this,"Throwable "+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
 
-            }
-        });
 
 
     }
+
+    public Integer validation(String usn, String password){
+        Integer valid = 1;
+        if(usn.isEmpty()){
+            edit_usn.getBackground().setColorFilter(getResources().getColor(R.color.merah), PorterDuff.Mode.SRC_IN);
+            edit_usn.setError("Masukkan NIP!");
+            valid = 0;
+        }
+        else{
+            edit_usn.getBackground().setColorFilter(getResources().getColor(R.color.abu_muda), PorterDuff.Mode.SRC_ATOP);
+            if(pw.isEmpty()){
+                edit_pw.getBackground().setColorFilter(getResources().getColor(R.color.merah), PorterDuff.Mode.SRC_ATOP);
+                edit_pw.setError("Masukkan password!");
+                valid = 0;
+            }
+            else{
+                edit_pw.getBackground().setColorFilter(getResources().getColor(R.color.abu_muda), PorterDuff.Mode.SRC_ATOP);
+            }
+        }
+        return valid;
+    }
+
 }
