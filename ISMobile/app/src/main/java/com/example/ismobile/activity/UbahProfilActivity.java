@@ -114,56 +114,6 @@ public class UbahProfilActivity extends AppCompatActivity{
         });
     }
 
-
-    /*public void update(View view){
-        name2 = edit_nama.getText().toString();
-        email2 = edit_email.getText().toString();
-
-        SharedPreferences sharedPreferences = this.getSharedPreferences("userkey", Context.MODE_PRIVATE);;
-        gettoken = sharedPreferences.getString("token", "");
-        token = "Bearer " + gettoken;
-        Log.d("token1", token);
-        Call<UpdateProfile> call = APIClient.getUserService().userProfileEdit(token, name, email);
-        call.enqueue(new Callback<UpdateProfile>() {
-            @Override
-            public void onResponse(Call<UpdateProfile> call, Response<UpdateProfile> response) {
-                UpdateProfile updateProfile = response.body();
-                String message;
-                JSONObject jsonObject = null;
-                Log.d("status", updateProfile.getMessage());
-                if (response.code() == 200){
-                    if (response.isSuccessful()) {
-                        message = response.body().getMessage();
-                        Toast.makeText(UbahProfilActivity.this, name2, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(UbahProfilActivity.this, MainActivity.class);
-                        intent.putExtra("name", name);
-                        setResult(RESULT_OK, intent);
-                        startActivity(intent);
-                        finish();
-                    }
-                }
-                else if(response.code() == 403){
-                    if(!response.isSuccessful()){
-                        try {
-                            jsonObject = new JSONObject(response.errorBody().string());
-                            message = jsonObject.getString("message");
-                        } catch (JSONException | IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                else{
-                    message = updateProfile.getMessage();
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UpdateProfile> call, Throwable t) {
-
-            }
-        });
-    }*/
     /*public void updateprofil(){
         name2 = edit_nama.getText().toString();
         email2 = edit_email.getText().toString();

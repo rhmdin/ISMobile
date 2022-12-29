@@ -51,7 +51,6 @@
         android:layout_marginStart="80dp"
         android:background="#C76B00"
         android:contentDescription="@string/app_name"
-        android:onClick="update"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8"
