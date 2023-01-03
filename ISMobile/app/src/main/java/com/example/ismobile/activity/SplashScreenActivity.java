@@ -25,7 +25,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 if( gettoken != null)
                 {
-                    startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
+                  startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
                 }else
                 {
                     startActivity(new Intent(SplashScreenActivity.this,LoginActivity.class));

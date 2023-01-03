@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -91,13 +92,26 @@ public class HomeFragment extends Fragment {
         profileResponseCall.enqueue(new Callback<Profile>() {
             @Override
             public void onResponse(Call<Profile> call, Response<Profile> response) {
-                Profile profileResponse = response.body();
-                tv_nama.setText(profileResponse.getName());
-                tv_nip.setText(profileResponse.getUsername());
+                if(response.code()==200){
+                    if(response.isSuccessful()){
+                        Toast.makeText(getActivity(), "Alhamdulillah", Toast.LENGTH_SHORT).show();
+                        Profile profileResponse = response.body();
+                        tv_nama.setText(profileResponse.getName());
+                        tv_nip.setText(profileResponse.getUsername());
+                    }
+                }
+                else if(response.code()==500){
+                    if(!response.isSuccessful()){
+                        Toast.makeText(getActivity(), "Servernya ada error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
             }
 
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
+                Toast.makeText(getActivity(), "Gagal dipanggil servenya", Toast.LENGTH_SHORT).show();
+
 
             }
         });
