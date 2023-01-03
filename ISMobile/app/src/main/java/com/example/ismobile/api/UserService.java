@@ -8,6 +8,9 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 import com.example.ismobile.modelapi.*;
+import com.example.ismobile.modelapi.DetailMahasiswa.*;
+import com.example.ismobile.modelapi.DetailTAMahasiswa.*;
+import com.example.ismobile.modelapi.ListMhsBimbingan.*;
 
 public interface UserService {
     @FormUrlEncoded
@@ -44,4 +47,12 @@ public interface UserService {
             @Field("confirm_password") String confPass
     );
 
+    @GET("api/thesis/advisors")
+    Call<ListBimbingan> listBimbingan(
+            @Header("Authorization") String token
+    );
+    @GET("api/theses/277/trials/")
+    Call<DetailMahasiswa> detailMhs(
+            @Header("Authorization") String token
+    );
 }
