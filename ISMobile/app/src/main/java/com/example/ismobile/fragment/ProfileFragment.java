@@ -190,7 +190,7 @@ public class ProfileFragment extends Fragment {
                     }
                 }
             }
-
+//
             @Override
             public void onFailure(Call<Logout> call, Throwable t) {
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
