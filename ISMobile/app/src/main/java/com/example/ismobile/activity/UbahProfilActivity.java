@@ -53,14 +53,25 @@ public class UbahProfilActivity extends AppCompatActivity{
         profileResponseCall.enqueue(new Callback<Profile>() {
             @Override
             public void onResponse(Call<Profile> call, Response<Profile> response) {
-                Profile profileResponse = response.body();
-                edit_nama.setText(profileResponse.getName());
-                edit_nip.setText(profileResponse.getUsername());
-                edit_email.setText(profileResponse.getEmail());
+                if(response.code()==200){
+                    if(response.isSuccessful()){
+                        Toast.makeText(UbahProfilActivity.this, "Alhamdulillah", Toast.LENGTH_SHORT).show();
+                        Profile profileResponse = response.body();
+                        edit_nama.setText(profileResponse.getName());
+                        edit_nip.setText(profileResponse.getUsername());
+                        edit_email.setText(profileResponse.getEmail());
+                    }
+                }
+                else if(response.code()==500){
+                    if(!response.isSuccessful()){
+                        Toast.makeText(UbahProfilActivity.this, "Servernya ada error", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
 
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
+                Toast.makeText(UbahProfilActivity.this, "Gagal dipanggil servenya", Toast.LENGTH_SHORT).show();
 
             }
         });
