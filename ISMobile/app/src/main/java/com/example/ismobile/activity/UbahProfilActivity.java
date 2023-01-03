@@ -82,7 +82,7 @@ public class UbahProfilActivity extends AppCompatActivity{
             public void onClick(View v) {
                 name2 = edit_nama.getText().toString();
                 email2 = edit_email.getText().toString();
-
+//
                 Call<UpdateProfile> call = APIClient.getUserService().userProfileEdit(token, email2, name2);
                 call.enqueue(new Callback<UpdateProfile>() {
                     @Override
