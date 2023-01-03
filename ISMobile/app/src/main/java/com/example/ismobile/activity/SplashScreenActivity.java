@@ -23,14 +23,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if( gettoken != null)
-                {
-                    startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
-                }else
-                {
+                //if( gettoken != null)
+                //{
+                  //  startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
+                //}else
+                //{
                     startActivity(new Intent(SplashScreenActivity.this,LoginActivity.class));
-                }
-                finish();
+                //}
+                //finish();
             }
         }, 2000);
     }
