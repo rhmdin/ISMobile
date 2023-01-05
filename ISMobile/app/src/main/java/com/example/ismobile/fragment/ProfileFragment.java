@@ -149,18 +149,62 @@ public class ProfileFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logout();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userkey",  Context.MODE_PRIVATE);
+                gettoken = sharedPreferences.getString("token", "");
+                token = "Bearer " + gettoken;
+
+                Call<Logout> call = APIClient.getUserService().userLogout(token);
+                call.enqueue(new Callback<Logout>() {
+                    @Override
+                    public void onResponse(Call<Logout> call, Response<Logout> response) {
+                        if(response.code()==200){
+                            if(response.isSuccessful()){
+                                Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                sharedPreferences.edit().clear().apply();
+                                    Intent logout = new Intent(getActivity(), LoginActivity.class);
+                                    startActivity(logout);
+
+
+                            }
+                        }
+                    }
+                    //
+                    @Override
+                    public void onFailure(Call<Logout> call, Throwable t) {
+                        Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
         ImageView logout_icon = rootview.findViewById(R.id.profile_logout_icon);
         logout_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logout();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userkey",  Context.MODE_PRIVATE);
+                gettoken = sharedPreferences.getString("token", "");
+                token = "Bearer " + gettoken;
+
+                Call<Logout> call = APIClient.getUserService().userLogout(token);
+                call.enqueue(new Callback<Logout>() {
+                    @Override
+                    public void onResponse(Call<Logout> call, Response<Logout> response) {
+                        if(response.code()==200){
+                            if(response.isSuccessful()){
+                                Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                sharedPreferences.edit().clear().apply();
+                                    Intent logout = new Intent(getActivity(), LoginActivity.class);
+                                    startActivity(logout);
+
+
+                            }
+                        }
+                    }
+                    //
+                    @Override
+                    public void onFailure(Call<Logout> call, Throwable t) {
+                        Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
         return rootview;
@@ -172,29 +216,4 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    public void logout(){
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("userkey",  Context.MODE_PRIVATE);
-        gettoken = sharedPreferences.getString("token", "");
-        token = "Bearer " + gettoken;
-
-        Call<Logout> call = APIClient.getUserService().userLogout(token);
-        call.enqueue(new Callback<Logout>() {
-            @Override
-            public void onResponse(Call<Logout> call, Response<Logout> response) {
-                if(response.code()==200){
-                    if(response.isSuccessful()){
-                        Intent logout = new Intent(getActivity(), LoginActivity.class);
-                        Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        sharedPreferences.edit().clear().apply();
-                        startActivity(logout);
-                    }
-                }
-            }
-//
-            @Override
-            public void onFailure(Call<Logout> call, Throwable t) {
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }
