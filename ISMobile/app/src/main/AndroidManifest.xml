@@ -17,6 +17,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.DetailTaMhsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ISMobile.Orange"  />
+        <activity
+            android:name=".activity.FormBatalTaActivity$DetailTaMhsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.BimbinganActivity"
             android:exported="false"
             android:theme="@style/Theme.ISMobile.Orange" />

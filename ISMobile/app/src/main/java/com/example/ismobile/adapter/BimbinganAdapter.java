@@ -3,6 +3,7 @@ package com.example.ismobile.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -56,6 +57,12 @@ public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyVi
         holder.tv_nama.setText(student.getName());
         holder.tv_nim.setText(student.getNim());
         holder.tv_ket.setText(student.getSejak());
+        holder.iv_bimbingan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bimbinganClickListener.onItemBimbinganClick(student);
+            }
+        });
     }
 
     @Override
@@ -74,12 +81,14 @@ public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyVi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv_nama, tv_nim,tv_ket;
+        ImageView iv_bimbingan;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_nama = itemView.findViewById(R.id.bimbingan_nama);
             tv_nim = itemView.findViewById(R.id.bimbingan_nim);
             tv_ket = itemView.findViewById(R.id.bimbingan_ket);
+            iv_bimbingan = itemView.findViewById(R.id.bimbingan_iv);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

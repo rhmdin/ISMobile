@@ -41,7 +41,7 @@ public class DetailUndanganActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_undangan);
         detail_kategori = findViewById(R.id.detailjadwal_kategori);
-        detail_judul_kategori = findViewById(R.id.detailjadwal_judulkategori);
+        detail_judul_kategori = findViewById(R.id.detailta_judul);
         acc = (Button) findViewById(R.id.detailjadwal_btn_acc);
         cancel = (Button) findViewById(R.id.detailjadwal_btn_reject);
 

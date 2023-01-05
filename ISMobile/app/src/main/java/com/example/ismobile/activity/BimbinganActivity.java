@@ -76,10 +76,10 @@ public class BimbinganActivity extends AppCompatActivity implements BimbinganAda
                     rv_bimbingan.setLayoutManager(new LinearLayoutManager(BimbinganActivity.this));
                     rv_bimbingan.setHasFixedSize(true);
                     if(!studentArrayList.isEmpty()){
-                        bimbinganAdapter = new BimbinganAdapter(studentArrayList);
+                        bimbinganAdapter = new BimbinganAdapter(studentArrayList, BimbinganActivity.this::onItemBimbinganClick);
                     }
                     else {
-                        bimbinganAdapter = new BimbinganAdapter(getBimbingan());
+                        bimbinganAdapter = new BimbinganAdapter(getBimbingan(), BimbinganActivity.this::onItemBimbinganClick);
                     }
                     bimbinganAdapter.setListStudent(studentArrayList);
                     rv_bimbingan.setAdapter(bimbinganAdapter);
@@ -181,7 +181,13 @@ public class BimbinganActivity extends AppCompatActivity implements BimbinganAda
         Intent bimbingandetail = new Intent(BimbinganActivity.this, DetailMahasiswaActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("idtesis", student.getIdThesis());
+        bundle.putString("mhsNama", student.getName());
+        bundle.putString("mhsNim", student.getNim());
+
         bimbingandetail.putExtras(bundle);
+        Toast.makeText(BimbinganActivity.this,"Buka "+student.getName(),Toast.LENGTH_SHORT);
         startActivity(bimbingandetail);
     }
+
+
 }

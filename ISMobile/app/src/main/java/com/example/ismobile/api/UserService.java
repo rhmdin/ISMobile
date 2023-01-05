@@ -6,6 +6,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 import com.example.ismobile.modelapi.*;
 
@@ -48,8 +49,14 @@ public interface UserService {
     Call<ListBimbingan> listBimbingan(
             @Header("Authorization") String token
     );
-    @GET("api/theses/277/trials/")
+    @GET("api/theses/{idtesis}/trials/")
     Call<DetailMahasiswa> detailMhs(
-            @Header("Authorization") String token
+            @Header("Authorization") String token,
+            @Path("idtesis") int idtesis
+    );
+    @GET("api/theses/{idtesis}")
+    Call<DetailTAMahasiswa> detailTAMhs(
+            @Header("Authorization") String token,
+            @Path("idtesis") int idtesis
     );
 }

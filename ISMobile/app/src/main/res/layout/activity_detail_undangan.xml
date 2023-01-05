@@ -28,14 +28,14 @@
         android:background="@color/orange_500"
         android:minWidth="48dp"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/detailjadwal_judulkategori"
+        app:layout_constraintBottom_toBottomOf="@+id/detailta_judul"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/detailjadwal_judulkategori"
+        app:layout_constraintTop_toTopOf="@+id/detailta_judul"
         app:srcCompat="@drawable/ic_arrow_back"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/detailjadwal_judulkategori"
+        android:id="@+id/detailta_judul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
@@ -88,7 +88,7 @@
         android:text="Jadwal Seminar  :"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/detailjadwal_dosbing"
+        app:layout_constraintEnd_toEndOf="@+id/detailta_supervisors"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/divider9"
         app:layout_constraintTop_toBottomOf="@+id/divider9" />
@@ -161,7 +161,7 @@
         android:text="Dosen PA          :"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/detailjadwal_dosbing"
+        app:layout_constraintEnd_toEndOf="@+id/detailta_supervisors"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/divider8"
         app:layout_constraintTop_toBottomOf="@+id/divider8" />
@@ -175,7 +175,7 @@
         android:text="Lokasi Seminar   :"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/detailjadwal_dosbing"
+        app:layout_constraintEnd_toEndOf="@+id/detailta_supervisors"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/detailjadwal_jadwal"
         app:layout_constraintTop_toBottomOf="@+id/detailjadwal_jadwal" />
@@ -201,13 +201,13 @@
         android:layout_height="1dp"
         android:layout_marginTop="36dp"
         android:background="#EFEFEF"
-        app:layout_constraintEnd_toEndOf="@+id/detailjadwal_dosbing1"
+        app:layout_constraintEnd_toEndOf="@+id/detailta_supervisors2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/detailjadwal_dosbing"
+        app:layout_constraintStart_toStartOf="@+id/detailta_supervisors"
         app:layout_constraintTop_toBottomOf="@+id/divider7" />
 
     <TextView
-        android:id="@+id/detailjadwal_judul1"
+        android:id="@+id/detailta_abstrak2"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -215,10 +215,10 @@
         android:text="Sistem Pakar Diagnosa Penyakit Tanaman Padi dengan Forward dan Backward Chaining"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/detailjadwal_judul"
+        app:layout_constraintBottom_toBottomOf="@+id/detailta_judulta"
         app:layout_constraintEnd_toEndOf="@+id/divider6"
-        app:layout_constraintStart_toEndOf="@+id/detailjadwal_judul"
-        app:layout_constraintTop_toTopOf="@+id/detailjadwal_judul" />
+        app:layout_constraintStart_toEndOf="@+id/detailta_judulta"
+        app:layout_constraintTop_toTopOf="@+id/detailta_judulta" />
 
     <View
         android:id="@+id/divider7"
@@ -226,11 +226,11 @@
         android:layout_height="1dp"
         android:layout_marginTop="6dp"
         android:background="#EFEFEF"
-        app:layout_constraintStart_toStartOf="@+id/detailjadwal_judul"
-        app:layout_constraintTop_toBottomOf="@+id/detailjadwal_judul1" />
+        app:layout_constraintStart_toStartOf="@+id/detailta_judulta"
+        app:layout_constraintTop_toBottomOf="@+id/detailta_abstrak2" />
 
     <TextView
-        android:id="@+id/detailjadwal_dosbing"
+        android:id="@+id/detailta_supervisors"
         android:layout_width="95dp"
         android:layout_height="31dp"
         android:layout_marginBottom="13dp"
@@ -244,7 +244,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/detailjadwal_nim"
+        android:id="@+id/detailta_nim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
@@ -253,8 +253,8 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/detailjadwal_nama"
-        app:layout_constraintTop_toBottomOf="@+id/detailjadwal_nama" />
+        app:layout_constraintStart_toStartOf="@+id/detailta_nama"
+        app:layout_constraintTop_toBottomOf="@+id/detailta_nama" />
 
     <TextView
         android:id="@+id/detailjadwal_kategori"
@@ -270,7 +270,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
     <TextView
-        android:id="@+id/detailjadwal_nama"
+        android:id="@+id/detailta_nama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -315,7 +315,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button_fileTA" />
 
     <TextView
-        android:id="@+id/detailjadwal_judul"
+        android:id="@+id/detailta_judulta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -327,7 +327,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider6" />
 
     <TextView
-        android:id="@+id/detailjadwal_dosbing1"
+        android:id="@+id/detailta_supervisors2"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -335,10 +335,10 @@
         android:text="Miftahurrahma Rosyda, S.Kom, M.Eng"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/detailjadwal_dosbing"
+        app:layout_constraintBottom_toBottomOf="@+id/detailta_supervisors"
         app:layout_constraintEnd_toEndOf="@+id/divider7"
         app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/detailjadwal_dosbing"
-        app:layout_constraintTop_toTopOf="@+id/detailjadwal_dosbing"
+        app:layout_constraintStart_toEndOf="@+id/detailta_supervisors"
+        app:layout_constraintTop_toTopOf="@+id/detailta_supervisors"
         app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

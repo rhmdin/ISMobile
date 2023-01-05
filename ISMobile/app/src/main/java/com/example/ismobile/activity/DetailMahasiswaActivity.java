@@ -9,21 +9,32 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ismobile.R;
+import com.example.ismobile.api.APIClient;
+import com.example.ismobile.modelapi.*;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailMahasiswaActivity extends AppCompatActivity {
 
@@ -31,8 +42,10 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
     private static final String CHANNEL_ID = "notif_logbook";
     private NotificationManagerCompat notificationManager;
     private ImageButton logbook, nilai, cancel;
-    private TextView detailmhs_nama, tv_nama;
-    private String nama;
+    private TextView tv_nim, tv_nama, tv_kontak, tv_tgl, tv_tmp, tv_waktu, tv_online, tv_penguji1, tv_penguji2, tv_penguji3;
+    private String nama, token, gettoken, tgl, waktu, sejak;
+    private int idtesis;
+    private SharedPreferences sharedPreferences;
 
 
 
@@ -45,24 +58,128 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
         notificationManager = NotificationManagerCompat.from(this);
         createNotificationChannel();
 
-        detailmhs_nama = findViewById(R.id.detailmhs_nama);
-        Intent bimbingandetail = getIntent();
-        String nama = bimbingandetail.getStringExtra("bimbingan_nama");
-        detailmhs_nama.setText(nama);
-        tv_nama = (TextView) findViewById(R.id.detailmhs_nama);
-        nama = tv_nama.getText().toString();
-        ImageButton btn_nilai = (ImageButton) findViewById(R.id.ib_mhsbim_icon_nilai);
-        ImageButton btn_logbook = (ImageButton) findViewById(R.id.ib_mhsbim_icon_logbook);
+        tv_nama = findViewById(R.id.detailmhs_nama);
+        tv_nim = findViewById(R.id.detailmhs_nim);
+        tv_kontak = findViewById(R.id.detailmhs_kontak);
+        tv_tgl = findViewById(R.id.detailmhs_tv_tgl);
+        tv_tmp = findViewById(R.id.detailmhs_tv_tmp);
+        tv_waktu = findViewById(R.id.detailmhs_tv_jam);
+        tv_online = findViewById(R.id.detailmhs_tv_online);
+        tv_penguji1 = findViewById(R.id.detailmhs_tv_penguji1);
+
+        Bundle bundle = getIntent().getExtras();
+        int idtesis = bundle.getInt("idtesis");
+        final String[] mhsNama = new String[1];
+        String mhsNim;
+        /*tv_nama.setText(mhsNama);
+        tv_nim.setText(mhsNim);*/
+
+        sharedPreferences = getSharedPreferences("userkey", Context.MODE_PRIVATE);
+        gettoken = sharedPreferences.getString("token", "");
+        token = "Bearer " + gettoken;
+
+        Call<DetailTAMahasiswa> calldetailta = APIClient.getUserService().detailTAMhs(token, idtesis);
+        calldetailta.enqueue(new Callback<DetailTAMahasiswa>() {
+            @Override
+            public void onResponse(Call<DetailTAMahasiswa> call, Response<DetailTAMahasiswa> response) {
+                DetailTAMahasiswa detailTAMahasiswa = response.body();
+                if(response.code()==200){
+
+                    mhsNama[0] = detailTAMahasiswa.getStudent().getName();
+                    tv_nama.setText(detailTAMahasiswa.getStudent().getName());
+                    tv_nim.setText(detailTAMahasiswa.getStudent().getNim());
+                    if(detailTAMahasiswa.getStudent().getPhone().isEmpty()||!detailTAMahasiswa.getStudent().getPhone().equals("")){
+                        tv_kontak.setText("No Telepon. "+detailTAMahasiswa.getStudent().getPhone());
+                    }
+                    List<Seminars> listSeminar = detailTAMahasiswa.getSeminars();
+                    for(Seminars itemseminar: listSeminar){
+                        if(!itemseminar.getSeminarAt().isEmpty()||!itemseminar.getSeminarAt().equals("")){
+                            tgl = Instant.parse(itemseminar.getSeminarAt())                // Parse this String in standard ISO 8601 format as a `Instant`, a point on the timeline in UTC. The `Z` means UTC.
+                                    .atOffset( ZoneOffset.UTC )                                // Change from `Instant` to the more flexible `OffsetDateTime`.
+                                    .format(                                                   // Generate a String representing the value of this `OffsetDateTime` object.
+                                            DateTimeFormatter.ofPattern( "dd/MM/uuuu" )   // Specify a formatting pattern as desired.
+                                    );
+                            waktu = Instant.parse(itemseminar.getSeminarAt())                // Parse this String in standard ISO 8601 format as a `Instant`, a point on the timeline in UTC. The `Z` means UTC.
+                                    .atOffset( ZoneOffset.UTC )                                // Change from `Instant` to the more flexible `OffsetDateTime`.
+                                    .format(                                                   // Generate a String representing the value of this `OffsetDateTime` object.
+                                            DateTimeFormatter.ofPattern( "HH:mm" )   // Specify a formatting pattern as desired.
+                                    );
+                            tv_tgl.setText("Tanggal : "+tgl);
+                            tv_waktu.setText("Pukul     : "+waktu+" s.d. Selesai");
+                            tv_tmp.setText("Tempat : Ruang "+itemseminar.getRoomId());
+                            if(itemseminar.getOnlineUrl()==null){
+                                tv_online.setText("Online  : -");
+                            }
+                            else {
+                                tv_online.setText("Online: "+itemseminar.getOnlineUrl());
+                            }
+                        }
+                    }
+                 }
+                else{
+                    Toast.makeText(DetailMahasiswaActivity.this,"kode: "+response.code(),Toast.LENGTH_SHORT);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DetailTAMahasiswa> call, Throwable t) {
+                Toast.makeText(DetailMahasiswaActivity.this,"kamu lagi offline jadi gagal panggil server",Toast.LENGTH_SHORT);
+            }
+        });
+
+        Call<DetailMahasiswa> calldetailmhs = APIClient.getUserService().detailMhs(token, idtesis);
+        calldetailmhs.enqueue(new Callback<DetailMahasiswa>() {
+            @Override
+            public void onResponse(Call<DetailMahasiswa> call, Response<DetailMahasiswa> response) {
+                DetailMahasiswa detailMahasiswa = response.body();
+                if(response.code()==200){
+                    List<Examiners> listPenguji = detailMahasiswa.getExaminers();
+                    if (!listPenguji.isEmpty()||!listPenguji.contains(null)){
+                        for(Examiners itempenguji: listPenguji){
+                            if(!itempenguji.getNik().isEmpty()||!itempenguji.getNik().equals("")){
+                                tv_penguji1.setText(itempenguji.getName());
+                            }
+                            else {
+                                tv_penguji1.setText("Belum ada");
+                            }
+                        }
+
+                    }
+                    else {
+                        tv_penguji1.setText("Belum ada");
+
+                    }
+
+
+                }
+                else {
+                    Toast.makeText(DetailMahasiswaActivity.this,"kode: "+response.code(),Toast.LENGTH_SHORT);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DetailMahasiswa> call, Throwable t) {
+                Toast.makeText(DetailMahasiswaActivity.this,"kamu lagi offline jadi gagal panggil server",Toast.LENGTH_SHORT);
+            }
+        });
+
 
         Log.d("usn", "login: " +nama);
 
-        btn_nilai.setOnClickListener(new View.OnClickListener() {
+        ImageButton btn_ta = (ImageButton) findViewById(R.id.ib_mhsbim_icon_ta);
+        btn_ta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent feedbacksidang = new Intent(DetailMahasiswaActivity.this, InputNilaiActivity.class);
-                startActivity(feedbacksidang);
+
+                Intent detailta = new Intent(DetailMahasiswaActivity.this, DetailTaMhsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("idtesis", idtesis);
+                detailta.putExtras(bundle);
+                Toast.makeText(DetailMahasiswaActivity.this,"Buka detail id "+mhsNama[0],Toast.LENGTH_SHORT);
+                startActivity( detailta);
             };
         });
+        ImageButton btn_logbook = (ImageButton) findViewById(R.id.ib_mhsbim_icon_logbook);
         btn_logbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +224,6 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
 
                         // Log and toast
                         System.out.println(token);
-                        Toast.makeText(DetailMahasiswaActivity.this, token, Toast.LENGTH_SHORT).show();
                     }
                 });
     }

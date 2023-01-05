@@ -54,7 +54,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/ib_mhsbim_icon_ta"
         android:layout_width="42dp"
         android:layout_height="52dp"
         android:background="@android:color/transparent"
@@ -71,14 +71,14 @@
         android:layout_marginEnd="24dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="@+id/btn_homebimbingan6"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+        app:layout_constraintEnd_toStartOf="@+id/ib_mhsbim_icon_ta"
         app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toEndOf="@+id/ib_mhsbim_icon_nilai"
         app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan6"
         app:layout_constraintVertical_bias="0.352" />
 
     <TextView
-        android:id="@+id/tv_mhsbim_jadwal5"
+        android:id="@+id/tv_mhsbim_ta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato_bold_italic"
@@ -86,10 +86,10 @@
         android:textColor="#C76B00"
         android:textSize="4pt"
         app:layout_constraintBottom_toBottomOf="@+id/divy_logbooknilai3"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton2"
+        app:layout_constraintEnd_toEndOf="@+id/ib_mhsbim_icon_ta"
         app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toStartOf="@+id/imageButton2"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintStart_toStartOf="@+id/ib_mhsbim_icon_ta"
+        app:layout_constraintTop_toBottomOf="@+id/ib_mhsbim_icon_ta"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView

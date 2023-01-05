@@ -10,8 +10,8 @@
 
     <ImageButton
         android:id="@+id/btn_homebimbingan5"
-        android:layout_width="343dp"
-        android:layout_height="98dp"
+        android:layout_width="335dp"
+        android:layout_height="96dp"
         android:background="@android:color/transparent"
         android:contentDescription="TODO"
         android:minWidth="48dp"
@@ -22,14 +22,14 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan3"
         app:layout_constraintTop_toBottomOf="@+id/btn_homebimbingan3"
-        app:layout_constraintVertical_bias="0.376"
+        app:layout_constraintVertical_bias="0.489"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/btn_homebimbingan3"
-        android:layout_width="345dp"
-        android:layout_height="295dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="330dp"
+        android:layout_height="223dp"
+        android:layout_marginTop="12dp"
         android:background="@android:color/transparent"
         android:contentDescription="TODO"
         android:minWidth="48dp"
@@ -43,8 +43,8 @@
 
     <ImageButton
         android:id="@+id/btn_homebimbingan4"
-        android:layout_width="342dp"
-        android:layout_height="110dp"
+        android:layout_width="334dp"
+        android:layout_height="121dp"
         android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
         android:contentDescription="TODO"
@@ -77,10 +77,10 @@
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintEnd_toStartOf="@+id/textView6"
-        app:layout_constraintHorizontal_bias="0.089"
-        app:layout_constraintStart_toStartOf="@+id/toolbar8"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView6"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.846"
         app:srcCompat="@drawable/ic_round_keyboard_arrow_left_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -110,88 +110,74 @@
         app:layout_constraintTop_toBottomOf="@+id/detailmhs_nama" />
 
     <TextView
-        android:id="@+id/detailmhs_tv_semhas_tgl"
-        android:layout_width="wrap_content"
+        android:id="@+id/detailmhs_tv_tgl"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/lato"
-        android:text="Senin, 07 November 2022"
+        android:text="Tanggal:"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/tv_mhsbim_semhas"
         app:layout_constraintTop_toBottomOf="@+id/tv_mhsbim_semhas" />
 
     <TextView
-        android:id="@+id/tv_mhsbim_sidang_tgl"
+        android:id="@+id/detailmhs_tv_penguji1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/lato"
-        android:text="Senin, 07 November 2022"
+        android:text="Belum ada"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/tv_mhsbim_sidang"
         app:layout_constraintTop_toBottomOf="@+id/tv_mhsbim_sidang" />
 
     <TextView
-        android:id="@+id/detailmhs_tv_semhas_tmp"
-        android:layout_width="wrap_content"
+        android:id="@+id/detailmhs_tv_tmp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="2dp"
         android:fontFamily="@font/lato"
-        android:text="Ruang seminar departemen"
+        android:text="Tempat:"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_mhsbim_semhas"
-        app:layout_constraintTop_toBottomOf="@+id/tv_mhsbim_semhas" />
+        app:layout_constraintStart_toStartOf="@+id/detailmhs_tv_tgl"
+        app:layout_constraintTop_toBottomOf="@+id/detailmhs_tv_jam" />
 
     <TextView
-        android:id="@+id/tv_mhsbim_sidang_tmp"
-        android:layout_width="wrap_content"
+        android:id="@+id/detailmhs_tv_jam"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
         android:fontFamily="@font/lato"
-        android:text="Ruang seminar departemen"
+        android:text="Waktu :"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_mhsbim_sidang_tgl"
-        app:layout_constraintTop_toBottomOf="@+id/tv_mhsbim_sidang_tgl" />
+        app:layout_constraintStart_toStartOf="@+id/detailmhs_tv_tgl"
+        app:layout_constraintTop_toBottomOf="@+id/detailmhs_tv_tgl" />
 
     <TextView
-        android:id="@+id/detailmhs_tv_semhas_jam"
-        android:layout_width="wrap_content"
+        android:id="@+id/detailmhs_tv_online"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="2dp"
         android:fontFamily="@font/lato"
-        android:text="09:00 - 12:00"
+        android:text="Online :"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_mhsbim_semhas"
-        app:layout_constraintTop_toBottomOf="@+id/tv_mhsbim_semhas" />
+        app:layout_constraintStart_toStartOf="@+id/detailmhs_tv_tgl"
+        app:layout_constraintTop_toBottomOf="@+id/detailmhs_tv_tmp" />
 
     <TextView
-        android:id="@+id/tv_mhsbim_sidang_jam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/lato"
-        android:text="09:00 - 12:00"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_mhsbim_sidang_tmp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_mhsbim_sidang_tmp" />
-
-    <TextView
-        android:id="@+id/detailmhs_sejak"
+        android:id="@+id/detailmhs_kontak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/lato_italic"
-        android:text="Bimbingan sejak 10/10/2022"
+        android:text="Tidak ada nomor telepon"
         android:textColor="#9F9E9E"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/detailmhs_nim"
@@ -201,9 +187,10 @@
         android:id="@+id/detailmhs_nama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/lato_bold"
+        android:maxLength="15"
         android:text="Ruth Emeralda"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -214,20 +201,21 @@
         android:id="@+id/detailmhs_ava"
         android:layout_width="71dp"
         android:layout_height="79dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_homebimbingan4"
         app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan4"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar8"
+        app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan4"
+        app:layout_constraintVertical_bias="0.476"
         app:srcCompat="@drawable/ic_profile" />
 
     <ImageView
         android:id="@+id/ic_mhsbim_jadwal"
         android:layout_width="51dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan4"
-        app:layout_constraintTop_toBottomOf="@+id/detailmhs_ava"
+        app:layout_constraintTop_toBottomOf="@+id/btn_homebimbingan4"
         app:srcCompat="@drawable/ic_round_event_note_24" />
 
     <TextView
@@ -236,27 +224,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:fontFamily="@font/lato_bold"
-        android:text="Jadwal Seminar"
+        android:text="Seminar"
         android:textColor="#000000"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/ic_mhsbim_jadwal"
         app:layout_constraintStart_toEndOf="@+id/ic_mhsbim_jadwal"
         app:layout_constraintTop_toTopOf="@+id/ic_mhsbim_jadwal" />
-
-    <TextView
-        android:id="@+id/tv_mhsbim_jadwal2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/lato_bold_italic"
-        android:text="Nilai"
-        android:textColor="#C76B00"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/divy_logbooknilai"
-        app:layout_constraintEnd_toEndOf="@+id/ib_mhsbim_icon_nilai"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toStartOf="@+id/ib_mhsbim_icon_nilai"
-        app:layout_constraintTop_toBottomOf="@+id/ib_mhsbim_icon_nilai"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_mhsbim_jadwal3"
@@ -265,12 +238,26 @@
         android:fontFamily="@font/lato_bold_italic"
         android:text="Logbook"
         android:textColor="#006836"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_homebimbingan5"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_mhsbim_ta2"
         app:layout_constraintEnd_toEndOf="@+id/ib_mhsbim_icon_logbook"
         app:layout_constraintStart_toStartOf="@+id/ib_mhsbim_icon_logbook"
         app:layout_constraintTop_toBottomOf="@+id/ib_mhsbim_icon_logbook"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_mhsbim_ta2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/lato_bold_italic"
+        android:text="Detail TA"
+        android:textColor="#C76B00"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_homebimbingan5"
+        app:layout_constraintEnd_toEndOf="@+id/ib_mhsbim_icon_ta"
+        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintStart_toStartOf="@+id/ib_mhsbim_icon_ta" />
 
     <TextView
         android:id="@+id/tv_mhsbim_jadwal4"
@@ -279,22 +266,21 @@
         android:fontFamily="@font/lato_bold_italic"
         android:text="Batal"
         android:textColor="#8B1A10"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/divy_logbooknilai2"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_mhsbim_ta2"
         app:layout_constraintEnd_toEndOf="@+id/ib_mhsbim_icon_cancel"
-        app:layout_constraintHorizontal_bias="0.687"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="@+id/ib_mhsbim_icon_cancel"
-        app:layout_constraintTop_toBottomOf="@+id/ib_mhsbim_icon_logbook"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/ib_mhsbim_icon_cancel" />
 
     <TextView
         android:id="@+id/tv_mhsbim_semhas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/lato_bold"
-        android:text="Seminar Hasil"
+        android:text="Jadwal"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -305,109 +291,91 @@
         android:id="@+id/tv_mhsbim_sidang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/lato_bold"
-        android:text="Sidang Akhir"
+        android:text="Penguji"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tv_mhsbim_semhas"
-        app:layout_constraintTop_toBottomOf="@+id/mhsbim_div_jadwal" />
-
-    <View
-        android:id="@+id/mhsbim_div_jadwal"
-        android:layout_width="300dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="24dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="@+id/btn_homebimbingan3"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan3"
-        app:layout_constraintTop_toBottomOf="@+id/detailmhs_tv_semhas_jam" />
+        app:layout_constraintTop_toBottomOf="@+id/detailmhs_tv_online" />
 
     <ImageView
         android:id="@+id/imageView23"
         android:layout_width="48dp"
         android:layout_height="62dp"
-        app:layout_constraintBottom_toBottomOf="@+id/detailmhs_tv_semhas_jam"
-        app:layout_constraintEnd_toEndOf="@+id/mhsbim_div_jadwal"
+        app:layout_constraintEnd_toEndOf="@+id/btn_homebimbingan3"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toEndOf="@+id/tv_mhsbim_semhas"
         app:layout_constraintTop_toTopOf="@+id/tv_mhsbim_semhas"
-        app:layout_constraintVertical_bias="0.485"
         app:srcCompat="@drawable/ic_outline_info_24" />
-
-    <ImageView
-        android:id="@+id/imageView19"
-        android:layout_width="48dp"
-        android:layout_height="62dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_mhsbim_sidang_jam"
-        app:layout_constraintEnd_toEndOf="@+id/mhsbim_div_jadwal"
-        app:layout_constraintTop_toTopOf="@+id/tv_mhsbim_sidang"
-        app:layout_constraintVertical_bias="0.485"
-        app:srcCompat="@drawable/ic_outline_info_24" />
-
-    <ImageButton
-        android:id="@+id/ib_mhsbim_icon_nilai"
-        android:layout_width="43dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="12dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toStartOf="@+id/ib_mhsbim_icon_logbook"
-        app:layout_constraintHorizontal_bias="0.326"
-        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan5"
-        app:layout_constraintTop_toTopOf="@+id/divy_logbooknilai"
-        app:srcCompat="@drawable/ic_round_inventory_24"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageButton
         android:id="@+id/ib_mhsbim_icon_logbook"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="28dp"
         android:background="@android:color/transparent"
-        android:onClick="onclick_imgbtn_logbook"
+        app:layout_constraintBottom_toBottomOf="@+id/divy_logbooknilai6"
         app:layout_constraintEnd_toEndOf="@+id/btn_homebimbingan5"
-        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan5"
-        app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan5"
+        app:layout_constraintHorizontal_bias="0.203"
+        app:layout_constraintStart_toEndOf="@+id/divy_logbooknilai6"
+        app:layout_constraintTop_toTopOf="@+id/ib_mhsbim_icon_ta"
+        app:layout_constraintVertical_bias="0.055"
         app:srcCompat="@drawable/ic_round_library_books_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/ib_mhsbim_icon_cancel"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="@+id/btn_homebimbingan5"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/ib_mhsbim_icon_logbook"
-        app:layout_constraintTop_toTopOf="@+id/divy_logbooknilai2"
+        app:layout_constraintBottom_toBottomOf="@+id/divy_logbooknilai"
+        app:layout_constraintEnd_toStartOf="@+id/divy_logbooknilai"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan5"
+        app:layout_constraintTop_toTopOf="@+id/ib_mhsbim_icon_ta"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_round_cancel_24"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/ib_mhsbim_icon_ta"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_mhsbim_ta2"
+        app:layout_constraintEnd_toEndOf="@+id/btn_homebimbingan5"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan5"
+        app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan5"
+        app:layout_constraintVertical_bias="0.961"
+        app:srcCompat="@drawable/ic_round_file_ta"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <View
+        android:id="@+id/divy_logbooknilai6"
+        android:layout_width="1dp"
+        android:layout_height="70dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_homebimbingan5"
+        app:layout_constraintEnd_toEndOf="@+id/btn_homebimbingan5"
+        app:layout_constraintHorizontal_bias="0.258"
+        app:layout_constraintStart_toEndOf="@+id/ib_mhsbim_icon_ta"
+        app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan5"
+        app:layout_constraintVertical_bias="0.307" />
 
     <View
         android:id="@+id/divy_logbooknilai"
         android:layout_width="1dp"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_mhsbim_jadwal3"
-        app:layout_constraintEnd_toStartOf="@+id/ib_mhsbim_icon_logbook"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toEndOf="@+id/ib_mhsbim_icon_nilai"
-        app:layout_constraintTop_toTopOf="@+id/ib_mhsbim_icon_logbook"
-        app:layout_constraintVertical_bias="0.857" />
-
-    <View
-        android:id="@+id/divy_logbooknilai2"
-        android:layout_width="1dp"
-        android:layout_height="75dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_mhsbim_jadwal3"
-        app:layout_constraintEnd_toStartOf="@+id/ib_mhsbim_icon_cancel"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toEndOf="@+id/ib_mhsbim_icon_logbook"
-        app:layout_constraintTop_toTopOf="@+id/ib_mhsbim_icon_logbook"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_homebimbingan5"
+        app:layout_constraintEnd_toStartOf="@+id/ib_mhsbim_icon_ta"
+        app:layout_constraintHorizontal_bias="0.755"
+        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan5"
+        app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan5"
+        app:layout_constraintVertical_bias="0.307" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
