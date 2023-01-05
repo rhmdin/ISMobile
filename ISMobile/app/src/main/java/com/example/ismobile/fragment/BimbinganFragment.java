@@ -82,7 +82,7 @@ public class BimbinganFragment extends Fragment implements BimbinganAdapter.Item
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         dataInitialized();
-        recyclerview = view.findViewById(R.id.recview_logbook);
+        recyclerview = view.findViewById(R.id.recview_bimbingan);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
         BimbinganAdapter myAdapter = new BimbinganAdapter(getContext(), bimbinganArrayList);
