@@ -9,7 +9,7 @@ public class ListBimbingan {
     @SerializedName("count") //banyak bimbingan
     private String count;
     @SerializedName("theses")
-    private String theses;
+    private Theses theses;
 
     public String getStatus() {
         return status;
@@ -27,11 +27,11 @@ public class ListBimbingan {
         this.count = count;
     }
 
-    public String getTheses() {
+    public Theses getTheses() {
         return theses;
     }
 
-    public void setTheses(String theses) {
+    public void setTheses(Theses theses) {
         this.theses = theses;
     }
 }
