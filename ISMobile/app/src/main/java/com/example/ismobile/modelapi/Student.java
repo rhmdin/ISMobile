@@ -57,10 +57,24 @@ public class Student {
     @SerializedName("status")
     private int status;
 
-    public Student(int idThesis, String name, String nim) {
+    private String sejak;
+    public Student(int idThesis, String name, String nim, String sejak) {
         this.idThesis = idThesis;
         this.name = name;
         this.nim = nim;
+        this.sejak = sejak;
+    }
+
+    public void setIdThesis(int idThesis) {
+        this.idThesis = idThesis;
+    }
+
+    public String getSejak() {
+        return sejak;
+    }
+
+    public void setSejak(String sejak) {
+        this.sejak = sejak;
     }
 
     public void setBirthday(String birthday){

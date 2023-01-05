@@ -68,7 +68,8 @@ public class BimbinganActivity extends AppCompatActivity implements BimbinganAda
                         Student student = new Student(
                                 itemTesis.getId(),
                                 itemTesis.getStudent().getName(),
-                                itemTesis.getStudent().getNim()
+                                itemTesis.getStudent().getNim(),
+                                itemTesis.getStartAt()
                         );
                         studentArrayList.add(student);
                     }
@@ -103,61 +104,73 @@ public class BimbinganActivity extends AppCompatActivity implements BimbinganAda
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_4),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));;
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_3),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));;
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_1),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));;
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_2),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_4),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));;
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_3),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));;
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_1),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));;
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_2),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_4),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));;
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_3),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));;
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_1),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));;
         studentArrayList.add(new Student(
                 1,
                 getString(R.string.bimbingan_nama_2),
+                getString(R.string.bimbingan_nim_2),
                 getString(R.string.bimbingan_nim_2)
         ));
         return studentArrayList;

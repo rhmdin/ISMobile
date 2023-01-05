@@ -54,7 +54,8 @@ public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Student student = listStudent.get(position);
         holder.tv_nama.setText(student.getName());
-
+        holder.tv_nim.setText(student.getNim());
+        holder.tv_ket.setText(student.getSejak());
     }
 
     @Override
@@ -77,6 +78,8 @@ public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyVi
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_nama = itemView.findViewById(R.id.bimbingan_nama);
+            tv_nim = itemView.findViewById(R.id.bimbingan_nim);
+            tv_ket = itemView.findViewById(R.id.bimbingan_ket);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

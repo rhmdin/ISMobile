@@ -91,7 +91,8 @@ public class BimbinganFragment extends Fragment implements BimbinganAdapter.Item
                         Student student = new Student(
                                 itemTesis.getId(),
                                 itemTesis.getStudent().getName(),
-                                itemTesis.getStudent().getNim()
+                                itemTesis.getStudent().getNim(),
+                                itemTesis.getStartAt()
                         );
                         studentArrayList.add(student);
                         LinearLayoutManager manager = new LinearLayoutManager(getContext());
