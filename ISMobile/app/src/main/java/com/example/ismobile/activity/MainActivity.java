@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
     Boolean isLoggedIn;
     String nama, token, username, email;
 
+
+    public void lihat (View view){
+        Intent listbimbingan = new Intent(MainActivity. this,LogbookActivity.class);
+        startActivity(listbimbingan);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

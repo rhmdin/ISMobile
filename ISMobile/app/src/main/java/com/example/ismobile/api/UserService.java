@@ -6,6 +6,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import com.example.ismobile.data.Listmahasiswabimbingan;
 
 import com.example.ismobile.modelapi.*;
 
@@ -26,6 +27,10 @@ public interface UserService {
     Call<Profile> userProfile(
             @Header("Authorization") String token
     );
+    @GET("api/admin")
+    Call<Listmahasiswabimbingan> getListmahasiswabimbingan (
+            @Header("Authorization") String token
+    );
 
     @FormUrlEncoded
     @POST("api/me/update")
@@ -43,5 +48,8 @@ public interface UserService {
             @Field("new_password") String newPass,
             @Field("confirm_password") String confPass
     );
+
+
+
 
 }

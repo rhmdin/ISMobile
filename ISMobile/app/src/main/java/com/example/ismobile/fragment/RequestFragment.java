@@ -1,20 +1,34 @@
 package com.example.ismobile.fragment;
 import com.example.ismobile.R;
+import com.example.ismobile.activity.DetailMahasiswaActivity;
 import com.example.ismobile.adapter.*;
+import com.example.ismobile.api.APIClient;
+import com.example.ismobile.data.Listmahasiswabimbingan;
 import com.example.ismobile.model.*;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.example.ismobile.data.Thesis;
+
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Callback;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +44,7 @@ public class RequestFragment extends Fragment {
     private String[] request_nama, request_nim, request_skripsi;
     private int[] request_avaID;
     private RecyclerView recyclerview;
+    private String token;
 
     public RequestFragment() {
         // Required empty public constructor
@@ -60,6 +75,7 @@ public class RequestFragment extends Fragment {
             String mParam1 = getArguments().getString(ARG_PARAM1);
             String mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -69,73 +85,64 @@ public class RequestFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_request, container, false);
     }
 
+
+
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            System.out.println("Fetching FCM registration token failed");
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                        System.out.println(token);
+                        Toast.makeText(RequestFragment.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
         super.onViewCreated(view, savedInstanceState);
-        dataInitialized();
+
         recyclerview = view.findViewById(R.id.recview_jadwaldosen);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
         RequestAdapter myAdapter = new RequestAdapter(getContext(), requestArrayList);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
-    }
-
-    private void dataInitialized(){
-        requestArrayList = new ArrayList<>();
-        request_nama = new String[]{
-                getString(R.string.bimbingan_nama_1),
-                getString(R.string.bimbingan_nama_2),
-                getString(R.string.bimbingan_nama_3),
-                getString(R.string.bimbingan_nama_4),
-                getString(R.string.bimbingan_nama_5),
-                getString(R.string.bimbingan_nama_6),
-                getString(R.string.bimbingan_nama_7),
-                getString(R.string.bimbingan_nama_8),
-                getString(R.string.bimbingan_nama_9),
-                getString(R.string.bimbingan_nama_10),
-        };
-        request_nim = new String[]{
-                getString(R.string.bimbingan_nim_1),
-                getString(R.string.bimbingan_nim_2),
-                getString(R.string.bimbingan_nim_3),
-                getString(R.string.bimbingan_nim_4),
-                getString(R.string.bimbingan_nim_5),
-                getString(R.string.bimbingan_nim_6),
-                getString(R.string.bimbingan_nim_7),
-                getString(R.string.bimbingan_nim_8),
-                getString(R.string.bimbingan_nim_9),
-                getString(R.string.bimbingan_nim_10),
-        };
-        request_skripsi = new String[]{
-                getString(R.string.skripsi1),
-                getString(R.string.skripsi2),
-                getString(R.string.skripsi3),
-                getString(R.string.skripsi4),
-                getString(R.string.skripsi5),
-                getString(R.string.skripsi6),
-                getString(R.string.skripsi7),
-                getString(R.string.skripsi8),
-                getString(R.string.skripsi9),
-                getString(R.string.skripsi10),
-        };
-        request_avaID = new int[]{
-                R.drawable.ic_profile,
-                R.drawable.ic_profile,
-                R.drawable.ic_profile,
-                R.drawable.ic_profile,
-                R.drawable.ic_profile,
-                R.drawable.ic_profile,
-                R.drawable.ic_profile,
-                R.drawable.ic_profile,
-                R.drawable.ic_profile,
-                R.drawable.ic_profile,
-        };
-
-        for(int i = 0; i<request_nim.length;i++){
-            Request request = new Request(request_nama[i], request_nim[i], request_skripsi[i], request_avaID[i]);
-            requestArrayList.add(request);
-        }
 
 
     }
-}
+
+    public ArrayList<Thesis>getMahasiswaTA(){
+        APIClient config = new APIClient();
+        ArrayList<Thesis>listmb = new ArrayList<>();
+        //panggil client
+        Call<Listmahasiswabimbingan> call = config.configRetrofit().getListmahasiswabimbingan(token);
+        call.enqueue(new Callback<Listmahasiswabimbingan>() {
+            @Override
+            public void onResponse(Call<Listmahasiswabimbingan> call, Response<Listmahasiswabimbingan> response) {
+                Listmahasiswabimbingan thesesData = response.body();
+                List<Thesis> listmahasiswa = thesesData.getTheses();
+                ArrayList<Thesis>Request = new ArrayList<>();
+                for(Thesis thesis : listmahasiswa){
+                    listmb.add(thesis);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Listmahasiswabimbingan> call, Throwable t) {
+                Toast.makeText(listmb.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return listmb;
+
+    }
+
+
+
+    }
