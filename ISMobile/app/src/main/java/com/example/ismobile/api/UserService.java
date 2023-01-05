@@ -44,4 +44,8 @@ public interface UserService {
             @Field("confirm_password") String confPass
     );
 
+    @GET("api/admin/thesis/seminar-submissions")
+    Call<ListUndangan> listUndangan(
+            @Header("Authorization") String token
+    );
 }

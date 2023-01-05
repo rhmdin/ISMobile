@@ -1,4 +1,5 @@
 package com.example.ismobile.adapter;
+import com.example.ismobile.fragment.JadwalDosenFragment;
 import com.example.ismobile.model.Bimbingan;
 import com.example.ismobile.model.JadwalDosen;
 
@@ -12,93 +13,82 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ismobile.R;
+import com.example.ismobile.modelapi.SeminarsItem;
+import com.example.ismobile.modelapi.Student;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
 public class JadwalDosenAdapter extends RecyclerView.Adapter<JadwalDosenAdapter.MyViewHolder>{
 
-    Context context;
-    ArrayList<JadwalDosen> jadwaldosenArrayList;
-    JadwalDosenAdapter.ItemUndanganClickListener undanganClickListener;
+    ArrayList<Student> listStudent;
+    ItemUndanganClickListener undanganClickListener;
+    private View itemView;
 
-    public JadwalDosenAdapter(Context context, ArrayList<JadwalDosen> jadwaldosenArrayList){
-        this.context = context;
-        this.jadwaldosenArrayList = jadwaldosenArrayList;
-
+    public JadwalDosenAdapter(ArrayList<Student> listStudent) {
+        this.listStudent = listStudent;
+        notifyDataSetChanged();
     }
 
-    public JadwalDosenAdapter(ArrayList<JadwalDosen> jadwaldosenArrayList, ItemUndanganClickListener undanganClickListener) {
-        this.jadwaldosenArrayList = jadwaldosenArrayList;
-        this.undanganClickListener = undanganClickListener;
+    public JadwalDosenAdapter(ArrayList<Student> listStudent, ItemUndanganClickListener bimbinganClickListener) {
+        this.listStudent = listStudent;
+        this.undanganClickListener= undanganClickListener;
     }
 
-    public void setJadwaldosenArrayList(ArrayList<JadwalDosen> jadwaldosenArrayList) {
-        this.jadwaldosenArrayList = jadwaldosenArrayList;
+    public void setListStudent(ArrayList<Student> listStudent) {
+        this.listStudent = listStudent;
+        notifyDataSetChanged();
     }
 
-    public void setListener(ItemUndanganClickListener undanganClickListener) {
+    public void setUndanganClickListener(ItemUndanganClickListener undanganClickListener) {
         this.undanganClickListener = undanganClickListener;
     }
 
     @NonNull
     @Override
-    public JadwalDosenAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.list_jadwaldosen,parent,false);
-
-        return new JadwalDosenAdapter.MyViewHolder(v);
+        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.list_jadwaldosen, parent, false));
     }
-
     @Override
-    public void onBindViewHolder(@NonNull JadwalDosenAdapter.MyViewHolder holder, int position) {
-
-        JadwalDosen jadwalDosen = jadwaldosenArrayList.get(position);
-        holder.jadwaldosen_nama.setText(jadwalDosen.nama);
-        holder.jadwaldosen_nim.setText(jadwalDosen.nim);
-        holder.jadwaldosen_skripsi.setText(jadwalDosen.skripsi);
-        holder.jadwaldosen_waktu.setText(jadwalDosen.waktu);
-        holder.jadwaldosen_kategori.setText(jadwalDosen.kategori);
-        holder.jadwaldosen_jam.setText(jadwalDosen.jam);
-        holder.jadwaldosen_tempat.setText(jadwalDosen.tempat);
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Student student = listStudent.get(position);
+        holder.tv_nama.setText(student.getName());
+        holder.tv_nim.setText(student.getNim());
     }
 
     @Override
     public int getItemCount() {
-        return jadwaldosenArrayList.size();
+        return listStudent.size();
     }
-    public interface  ItemUndanganClickListener{
-        void onItemUndanganClick(JadwalDosen jadwaldosen);
 
+    public void setListener(ItemUndanganClickListener itemUndanganClickListener) {
+        this.undanganClickListener = undanganClickListener;
     }
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        ShapeableImageView jadwaldosen_ava;
-        TextView jadwaldosen_nama;
-        TextView jadwaldosen_nim;
-        TextView jadwaldosen_skripsi;
-        TextView jadwaldosen_waktu;
-        TextView jadwaldosen_kategori;
-        TextView jadwaldosen_jam;
-        TextView jadwaldosen_tempat;
 
-        public MyViewHolder(@NonNull View itemView){
+    public interface ItemUndanganClickListener{
+        void onItemUndanganClick(Student student);
+
+        void onItemUndanganClick(SeminarsItem seminarsItem);
+
+        void onItemBimbinganClick(SeminarsItem seminarsItem);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView tv_nama, tv_nim,tv_ket;
+
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            jadwaldosen_kategori = itemView.findViewById(R.id.jadwaldosen_kategori);
-            jadwaldosen_nama = itemView.findViewById(R.id.jadwaldosen_nama);
-            jadwaldosen_nim = itemView.findViewById(R.id.jadwaldosen_nim);
-            jadwaldosen_waktu = itemView.findViewById(R.id.jadwaldosen_waktu);
-            jadwaldosen_skripsi = itemView.findViewById(R.id.jadwaldosen_skripsi);
-            jadwaldosen_jam = itemView.findViewById(R.id.jadwaldosen_jam);
-            jadwaldosen_tempat = itemView.findViewById(R.id.jadwaldosen_tempat);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-
-            JadwalDosen jadwaldosen = jadwaldosenArrayList.get(getAdapterPosition());
-            undanganClickListener.onItemUndanganClick(jadwaldosen);
+            tv_nama = itemView.findViewById(R.id.jadwaldosen_nama);
+            tv_nim = itemView.findViewById(R.id.jadwaldosen_nim);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Student student = listStudent.get(getAdapterPosition());
+                    undanganClickListener.onItemUndanganClick(student);
+                }
+            });
         }
     }
 }

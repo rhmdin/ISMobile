@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 MODE_PRIVATE
         );
         nama = sharedPreferences.getString("name", "Dosen");
-        username = sharedPreferences.getString("username", "123");
+        username = sharedPreferences.getString("username", "456");
         email = sharedPreferences.getString("email", "email");
 
         token = sharedPreferences.getString("token","");

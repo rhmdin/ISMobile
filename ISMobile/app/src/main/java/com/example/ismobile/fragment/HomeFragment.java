@@ -1,10 +1,4 @@
 package com.example.ismobile.fragment;
-import com.example.ismobile.activity.LoginActivity;
-import com.example.ismobile.R;
-import com.example.ismobile.adapter.*;
-import com.example.ismobile.api.APIClient;
-import com.example.ismobile.model.*;
-import com.example.ismobile.modelapi.*;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +17,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ismobile.R;
+import com.example.ismobile.activity.LoginActivity;
+import com.example.ismobile.adapter.BimbinganAdapter;
+import com.example.ismobile.api.APIClient;
+import com.example.ismobile.model.Bimbingan;
+import com.example.ismobile.modelapi.Profile;
 
 import java.util.ArrayList;
 
