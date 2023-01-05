@@ -1,4 +1,4 @@
-package com.example.ismobile.modelapi.DetailMahasiswa;
+package com.example.ismobile.modelapi;
 
 import com.google.gson.annotations.SerializedName;
 

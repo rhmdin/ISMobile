@@ -29,9 +29,11 @@ public class LogbookAdapter extends RecyclerView.Adapter<LogbookAdapter.MyViewHo
     public LogbookAdapter(ArrayList<Logbook> listLogbook) {
         this.listLogbook = listLogbook;
     }
+
     public void setListener(ItemLogbookClickListener logbookClickListener) {
         this.logbookClickListener = logbookClickListener;
     }
+
     public LogbookAdapter(ArrayList<Logbook> listLogbook, ItemLogbookClickListener logbookClickListener) {
         this.listLogbook = listLogbook;
         this.logbookClickListener = logbookClickListener;

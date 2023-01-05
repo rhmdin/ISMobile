@@ -6,10 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.ismobile.R;
-import com.example.ismobile.adapter.BimbinganAdapter;
 import com.example.ismobile.adapter.LogbookAdapter;
 import com.example.ismobile.model.Logbook;
 

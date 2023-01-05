@@ -1,4 +1,6 @@
 package com.example.ismobile.fragment;
+import com.example.ismobile.activity.BimbinganActivity;
+import com.example.ismobile.activity.DetailMahasiswaActivity;
 import com.example.ismobile.activity.LoginActivity;
 import com.example.ismobile.R;
 import com.example.ismobile.adapter.*;
@@ -128,28 +130,16 @@ public class HomeFragment extends Fragment {
         home2bimbingan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fr = getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_layout, new BimbinganFragment());
-                fr.commit();
+                Intent home2bimbingan = new Intent(getActivity(), BimbinganActivity.class);
+                startActivity(home2bimbingan);
+                /*FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_layout, new com.example.ismobile.fragment.BimbinganFragment());
+                fr.commit();*/
             }
         });
 
         return rootview;
     }
-//
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        dataInitialized();
-        rv_bimbingan = view.findViewById(R.id.recview_logbook);
-        rv_bimbingan.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv_bimbingan.setHasFixedSize(true);
-        BimbinganAdapter myAdapter = new BimbinganAdapter(getContext(), bimbinganArrayList);
-        rv_bimbingan.setAdapter(myAdapter);
-        myAdapter.notifyDataSetChanged();
-    }
-
     private void dataInitialized(){
         bimbinganArrayList = new ArrayList<>();
         bimbingan_nama = new String[]{

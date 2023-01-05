@@ -1,8 +1,8 @@
-package com.example.ismobile.modelapi.DetailMahasiswa;
+package com.example.ismobile.modelapi;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Pivot {
+public class DetailMahasiswaPivot {
     @SerializedName("thesis_trial_id")
     private int thesis_trial_id;
     @SerializedName("examiner_id")

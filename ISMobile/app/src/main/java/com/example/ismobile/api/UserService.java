@@ -8,9 +8,6 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 import com.example.ismobile.modelapi.*;
-import com.example.ismobile.modelapi.DetailMahasiswa.*;
-import com.example.ismobile.modelapi.DetailTAMahasiswa.*;
-import com.example.ismobile.modelapi.ListMhsBimbingan.*;
 
 public interface UserService {
     @FormUrlEncoded

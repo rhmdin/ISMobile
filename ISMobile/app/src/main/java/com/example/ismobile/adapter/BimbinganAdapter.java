@@ -1,8 +1,5 @@
 package com.example.ismobile.adapter;
-import com.example.ismobile.R;
-import com.example.ismobile.model.*;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,82 +7,83 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.ismobile.R;
 
-import com.google.android.material.imageview.ShapeableImageView;
+import com.example.ismobile.activity.BimbinganActivity;
+import com.example.ismobile.modelapi.ListBimbingan;
+import com.example.ismobile.modelapi.Student;
+import com.example.ismobile.modelapi.Theses;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Callback;
 
 public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyViewHolder> {
 
-    Context context;
-    ArrayList<Bimbingan> bimbinganArrayList;
-
+    ArrayList<Student> listStudent;
     ItemBimbinganClickListener bimbinganClickListener;
 
-    public BimbinganAdapter(Context context, ArrayList<Bimbingan> bimbinganArrayList){
-        this.context = context;
-        this.bimbinganArrayList = bimbinganArrayList;
-
+    public BimbinganAdapter(ArrayList<Student> listStudent) {
+        this.listStudent = listStudent;
+        notifyDataSetChanged();
     }
 
-    public void setListener(ItemBimbinganClickListener bimbinganClickListener) {
+    public BimbinganAdapter(ArrayList<Student> listStudent, ItemBimbinganClickListener bimbinganClickListener) {
+        this.listStudent = listStudent;
         this.bimbinganClickListener = bimbinganClickListener;
     }
-    public BimbinganAdapter(ArrayList<Bimbingan> bimbinganArrayList, ItemBimbinganClickListener bimbinganClickListener) {
-        this.bimbinganArrayList = bimbinganArrayList;
-        this.bimbinganClickListener = bimbinganClickListener;
+
+    public void setListStudent(ArrayList<Student> listStudent) {
+        this.listStudent = listStudent;
+        notifyDataSetChanged();
     }
-    public void setBimbinganArrayList(ArrayList<Bimbingan> bimbinganArrayList) {
-        this.bimbinganArrayList = bimbinganArrayList;
+
+    public void setBimbinganClickListener(ItemBimbinganClickListener bimbinganClickListener) {
+        this.bimbinganClickListener = bimbinganClickListener;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.list_bimbingan,parent,false);
-
-        return new MyViewHolder(v);
+        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.list_bimbingan, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Student student = listStudent.get(position);
+        holder.tv_nama.setText(student.getName());
 
-        Bimbingan bimbingan = bimbinganArrayList.get(position);
-        holder.bimbingan_nama.setText(bimbingan.nama);
-        holder.bimbingan_nim.setText(bimbingan.nim);
-        holder.bimbingan_ava.setImageResource(bimbingan.ava);
     }
 
     @Override
     public int getItemCount() {
-        return bimbinganArrayList.size();
+        return listStudent.size();
     }
 
-    public interface  ItemBimbinganClickListener{
-        void onItemBimbinganClick(Bimbingan bimbingan);
+    public void setListener(ItemBimbinganClickListener itemBimbinganClickListener) {
+        this.bimbinganClickListener = bimbinganClickListener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        ShapeableImageView bimbingan_ava;
-        TextView bimbingan_nama;
-        TextView bimbingan_nim;
+    public interface ItemBimbinganClickListener{
+        void onItemBimbinganClick(Student student);
+    }
 
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView tv_nama, tv_nim,tv_ket;
 
-        public MyViewHolder(@NonNull View itemView){
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            bimbingan_ava = itemView.findViewById(R.id.bimbingan_ava);
-            bimbingan_nama = itemView.findViewById(R.id.bimbingan_nama);
-            bimbingan_nim = itemView.findViewById(R.id.bimbingan_nim);
-
-            itemView.setOnClickListener(this);
-
-        }
-
-        public void onClick(View view) {
-            Bimbingan bimbingan = bimbinganArrayList.get(getAdapterPosition());
-            bimbinganClickListener.onItemBimbinganClick(bimbingan);
+            tv_nama = itemView.findViewById(R.id.bimbingan_nama);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Student student = listStudent.get(getBindingAdapterPosition());
+                    bimbinganClickListener.onItemBimbinganClick(student);
+                }
+            });
         }
     }
 }
