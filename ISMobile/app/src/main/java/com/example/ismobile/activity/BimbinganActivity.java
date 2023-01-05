@@ -165,7 +165,10 @@ public class BimbinganActivity extends AppCompatActivity implements BimbinganAda
 
     @Override
     public void onItemBimbinganClick(Student student) {
-        Intent detail = new Intent(BimbinganActivity.this, DetailMahasiswaActivity.class);
-        startActivity(detail);
+        Intent bimbingandetail = new Intent(BimbinganActivity.this, DetailMahasiswaActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("idtesis", student.getIdThesis());
+        bimbingandetail.putExtras(bundle);
+        startActivity(bimbingandetail);
     }
 }
