@@ -15,6 +15,9 @@ import com.example.ismobile.modelapi.ListBimbingan;
 import com.example.ismobile.modelapi.Student;
 import com.example.ismobile.modelapi.Theses;
 
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +27,7 @@ public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyVi
 
     ArrayList<Student> listStudent;
     ItemBimbinganClickListener bimbinganClickListener;
+    public String tgl, sejak;
 
     public BimbinganAdapter(ArrayList<Student> listStudent) {
         this.listStudent = listStudent;
@@ -56,7 +60,8 @@ public class BimbinganAdapter extends RecyclerView.Adapter<BimbinganAdapter.MyVi
         Student student = listStudent.get(position);
         holder.tv_nama.setText(student.getName());
         holder.tv_nim.setText(student.getNim());
-        holder.tv_ket.setText(student.getSejak());
+
+        holder.tv_ket.setText("Bimbingan sejak "+student.getSejak());
         holder.iv_bimbingan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

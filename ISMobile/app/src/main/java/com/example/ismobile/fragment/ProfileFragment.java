@@ -73,7 +73,6 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    FragmentProfileBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

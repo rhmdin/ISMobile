@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/btn_logout"
+        android:id="@+id/home_logout_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -78,45 +78,44 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="326dp"
-        android:layout_height="96dp"
+        android:layout_width="318dp"
+        android:layout_height="122dp"
         android:layout_marginTop="20dp"
         android:background="@color/white"
         android:backgroundTint="@android:color/white"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_logout"
+        app:layout_constraintEnd_toEndOf="@+id/home_logout_icon"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/imageView46"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="116dp">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="81dp"
-                android:layout_height="81dp"
+                android:layout_width="80dp"
+                android:layout_height="87dp"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/photo_profile"
-                app:layout_constraintBottom_toBottomOf="@+id/home_nip"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/msg_welcome"
-                app:layout_constraintVertical_bias="0.545" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/msg_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Selamat Datang"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/imageView" />
 
             <TextView
                 android:id="@+id/home_nama"
@@ -126,19 +125,22 @@
                 android:text="Husnil Kamil, M.T."
                 android:textColor="#000000"
                 android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/home_nip"
                 app:layout_constraintStart_toStartOf="@+id/msg_welcome"
-                app:layout_constraintTop_toBottomOf="@+id/msg_welcome" />
+                app:layout_constraintTop_toBottomOf="@+id/msg_welcome"
+                app:layout_constraintVertical_bias="0.263" />
 
             <TextView
                 android:id="@+id/home_nip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
                 android:fontFamily="@font/lato_italic"
                 android:text="198201182008121002"
                 android:textColor="#9F9E9E"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/msg_welcome"
-                app:layout_constraintTop_toBottomOf="@+id/home_nama" />
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="@+id/msg_welcome" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -166,6 +168,7 @@
         android:id="@+id/more"
         android:layout_width="72dp"
         android:layout_height="25dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/roboto_medium"
         android:text="more..."
         android:textColor="#000000"
@@ -173,23 +176,22 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/btn_homebimbingan"
         app:layout_constraintEnd_toEndOf="@+id/recview_bimbingan"
-        app:layout_constraintTop_toBottomOf="@+id/recview_bimbingan"
-        app:layout_constraintVertical_bias="0.444" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview_bimbingan"
-        android:layout_width="314dp"
-        android:layout_height="287dp"
-        android:clickable="false"
-        android:contextClickable="false"
-        android:longClickable="false"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_homebimbingan"
+        android:layout_width="292dp"
+        android:layout_height="291dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/more"
         app:layout_constraintEnd_toEndOf="@+id/btn_homebimbingan"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.313"
         app:layout_constraintStart_toStartOf="@+id/btn_homebimbingan"
         app:layout_constraintTop_toTopOf="@+id/btn_homebimbingan"
-        app:layout_constraintVertical_bias="0.129"
-        tools:listitem="@layout/list_bimbingan" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/list_bimbingan"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/judul_bimbingan"
@@ -197,11 +199,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/lato_bold"
-        android:text="Mahasiswa Bismbingan TA"
+        android:text="Bimbingan"
         android:textColor="#000000"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_logout"
-        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintEnd_toEndOf="@+id/home_logout_icon"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="@+id/imageView46"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
