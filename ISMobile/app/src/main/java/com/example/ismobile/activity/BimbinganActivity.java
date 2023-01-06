@@ -9,16 +9,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ismobile.R;
 import com.example.ismobile.adapter.BimbinganAdapter;
-import com.example.ismobile.adapter.LogbookAdapter;
 import com.example.ismobile.api.APIClient;
-import com.example.ismobile.fragment.BimbinganFragment;
-import com.example.ismobile.model.Bimbingan;
-import com.example.ismobile.model.Logbook;
 import com.example.ismobile.modelapi.ListBimbingan;
 import com.example.ismobile.modelapi.Student;
 import com.example.ismobile.modelapi.Theses;
@@ -95,6 +93,15 @@ public class BimbinganActivity extends AppCompatActivity implements BimbinganAda
             public void onFailure(Call<ListBimbingan> call, Throwable t) {
                 Toast.makeText(BimbinganActivity.this,"gagal call",Toast.LENGTH_SHORT);
             }
+        });
+
+        ImageButton bimbingan2home = (ImageButton) findViewById(R.id.bimbingan_btn_back);
+        bimbingan2home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent home = new Intent(BimbinganActivity.this, MainActivity.class);
+                startActivity(home);
+            };
         });
     }
 

@@ -88,8 +88,9 @@ public class HomeFragment extends Fragment {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("userkey", Context.MODE_PRIVATE);
         gettoken = sharedPreferences.getString("token", "");
         token = "Bearer " + gettoken;
-
-
+        String getname = sharedPreferences.getString("name","");
+        tv_nama.setText(getname);
+        
         Call<Profile> profileResponseCall = APIClient.getUserService().userProfile(token);
         profileResponseCall.enqueue(new Callback<Profile>() {
             @Override
@@ -117,6 +118,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
         ImageButton logout = rootview.findViewById(R.id.btn_logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

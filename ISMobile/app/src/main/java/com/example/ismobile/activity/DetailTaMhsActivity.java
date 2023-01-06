@@ -15,8 +15,6 @@ import android.widget.Toast;
 import com.example.ismobile.R;
 import com.example.ismobile.api.APIClient;
 import com.example.ismobile.modelapi.DetailTAMahasiswa;
-import com.example.ismobile.modelapi.Examiners;
-import com.example.ismobile.modelapi.Seminars;
 import com.example.ismobile.modelapi.Supervisors;
 
 import java.time.Instant;
@@ -80,7 +78,7 @@ public class DetailTaMhsActivity extends AppCompatActivity {
                     tv_abstrak.setText(detailTAMahasiswa.getAbstrak());
                     tv_nilai.setText(detailTAMahasiswa.getGrade());
                     sharedPreferences = getSharedPreferences("userkey", Context.MODE_PRIVATE);
-                    usn = sharedPreferences.getString("username", "");
+                    String getname = sharedPreferences.getString("name","");
 
 
                     List<Supervisors> listpembimbing = detailTAMahasiswa.getSupervisors();
@@ -90,10 +88,10 @@ public class DetailTaMhsActivity extends AppCompatActivity {
                                 pembimbing2 = itempembimbing.getName();
                             }
                         }
-                        tv_pembimbing.setText(usn+" "+pembimbing2);
+                        tv_pembimbing.setText(getname+", "+pembimbing2);
                     }
                     else {
-                        tv_pembimbing.setText(usn);
+                        tv_pembimbing.setText(getname);
                     }
                 }
                 else {
@@ -107,7 +105,7 @@ public class DetailTaMhsActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton ta2profil = (ImageButton) findViewById(R.id.detailta_btn_back);
+        ImageButton ta2profil = (ImageButton) findViewById(R.id.bimbingan_btn_back);
         ta2profil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

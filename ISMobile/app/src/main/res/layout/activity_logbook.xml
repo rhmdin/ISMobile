@@ -29,15 +29,15 @@
         android:text="Logbook"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@+id/detailta_btn_back"
+        app:layout_constraintBottom_toBottomOf="@+id/bimbingan_btn_back"
         app:layout_constraintEnd_toEndOf="@+id/toolbar10"
         app:layout_constraintHorizontal_bias="0.37"
-        app:layout_constraintStart_toEndOf="@+id/detailta_btn_back"
-        app:layout_constraintTop_toTopOf="@+id/detailta_btn_back"
+        app:layout_constraintStart_toEndOf="@+id/bimbingan_btn_back"
+        app:layout_constraintTop_toTopOf="@+id/bimbingan_btn_back"
         app:layout_constraintVertical_bias="0.846" />
 
     <ImageButton
-        android:id="@+id/detailta_btn_back"
+        android:id="@+id/bimbingan_btn_back"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
