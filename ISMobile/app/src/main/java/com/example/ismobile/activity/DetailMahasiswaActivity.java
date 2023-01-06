@@ -143,11 +143,9 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
                                 tv_penguji1.setText("Belum ada");
                             }
                         }
-
                     }
                     else {
                         tv_penguji1.setText("Belum ada");
-
                     }
 
 
@@ -165,6 +163,19 @@ public class DetailMahasiswaActivity extends AppCompatActivity {
 
 
         Log.d("usn", "login: " +nama);
+
+
+        ImageButton profil2bimbingan = (ImageButton) findViewById(R.id.detailmhs_ib_back);
+        profil2bimbingan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent bimbingan = new Intent(DetailMahasiswaActivity.this, BimbinganActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("idtesis", idtesis);
+                bimbingan.putExtras(bundle);
+                startActivity( bimbingan);
+            };
+        });
 
         ImageButton btn_ta = (ImageButton) findViewById(R.id.ib_mhsbim_icon_ta);
         btn_ta.setOnClickListener(new View.OnClickListener() {

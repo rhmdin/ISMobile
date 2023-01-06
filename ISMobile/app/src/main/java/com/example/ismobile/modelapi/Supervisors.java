@@ -234,4 +234,5 @@ public class Supervisors {
     public void setStatus(int status) {
         this.status = status;
     }
+
 }
